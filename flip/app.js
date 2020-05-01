@@ -1,4 +1,4 @@
-$(document).ready(function(){
+document.addEventListener("DOMContentLoaded", function(event) { 
     const pawn = document.querySelector('.pawn-body');
     const wrapper = document.querySelector('.pawn-wrapper');
     const shadow = document.querySelector('.pawn-shadow');
@@ -22,3 +22,4 @@ $(document).ready(function(){
         }
     });
 });
+
