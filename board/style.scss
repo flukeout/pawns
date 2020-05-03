@@ -1,0 +1,170 @@
+body {
+  background: #312e2b;
+  display: flex;
+  font-family: sans-serif;
+}
+
+.even {
+  background-color: #eeeed2;
+}
+
+.odd {
+  background-color: #769656;
+}
+
+.wrapper {
+  margin: auto;
+  display: flex;
+}
+
+.piece {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+}
+
+$pieceClasses: "wp" "bp";
+
+@each $currentClass in $pieceClasses {
+  .piece.#{$currentClass} {
+    background-image: url(../img/pieces/#{$currentClass}.png);
+  }
+}
+
+.chat {
+  width: 300px;
+  background: #272522;
+  padding: 20px;
+  font-size: 15px;
+  color: hsla(0, 0%, 100%, 0.65);
+  position: relative;
+
+  input {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    background: #1f1e1b;
+    width: 300px;
+    font-size: 14px;
+    padding: 10px;
+    border: none;
+    color: hsla(0, 0%, 100%, 0.65);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .highlight {
+    padding: 0px 5px;
+    border-top: solid 1px rgba(255, 255, 255, 0.3);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+    margin: 0 2px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 1px;
+    position: relative;
+    top: -1px;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    animation: pop .4s ease-in-out;
+    display: inline-block;
+
+    @keyframes pop {
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    &:hover {
+      outline: solid 2px hsla(45, 89%, 58%, .65); 
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      left: -50%;
+      top: -50%;
+      height: 200%;
+    }
+  }
+
+  .message {
+    padding: 5px 0;
+    line-height: 22px;
+  }
+
+  .username {
+    font-weight: bold;
+
+    &::after {
+      content: ":";
+    }
+  }
+
+  .user-one {
+    color: #1bada6;
+  }
+
+  .user-two {
+    color: #f3c536;
+  }
+}
+
+.board {
+  width: 70vh;
+  height: 70vh;
+
+  .square {
+    float: left;
+    box-sizing: border-box;
+    z-index: 1;
+    transition: transform 0.1s ease-out;
+
+    &:after {
+      display: none;
+    }
+
+    &.highlight {
+      transition: transform 0.2s cubic-bezier(.4,1.26,.87,1.33);
+      outline: solid 4px #ffd656;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      transform: scale(1.15);
+      z-index: 9;
+    }
+  }
+}
+
+.pawn-wrapper {
+  width: 100px;
+  height: 100px;
+  left: calc(50% - 50px);
+  position: absolute;
+  bottom: 15px;
+}
+
+.base {
+  background: url(img/base.svg);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  transform-origin: top;
+  animation: shimmy 1s linear infinite;
+}
+
+@keyframes shimmy {
+  25% {
+    transform: skewY(-5deg);
+  }
+
+  75% {
+    transform: skewY(5deg);
+  }
+}
