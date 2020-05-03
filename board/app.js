@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 const keyPress = e => {
     if(e.code == "Enter") {
-        addMessage("Flukeout", inputEl.value);
+        addMessage("Flukeout", "one", inputEl.value);
     }
 }
 
@@ -65,30 +65,32 @@ const placePieces = (boardSelector, pieces) => {
     });
 }
 
-const gleamTile = tileCode => {
+const gleamTile = (tileCode, player) => {
     document.querySelector(".square[name=" + tileCode).classList.add("highlight");
+    document.querySelector(".square[name=" + tileCode).classList.add(player);
 
     setTimeout(function(){
         document.querySelector(".square[name=" + tileCode).classList.remove("highlight");
+        document.querySelector(".square[name=" + tileCode).classList.remove(player);
     },650);
 }
 
-const addMessage = (user, string) => {
+const addMessage = (username, player, string) => {
 
     inputEl.value = "";
     let newMessage = document.createElement("div");
     newMessage.classList.add("message");
-    newMessage.innerHTML = "<span class='username user-one'>Flukeout</span> ";
+    newMessage.innerHTML = "<span class='username user-one'>"+ username + "</span> ";
+    newMessage.setAttribute("player", player);
     let messageEl = document.createElement("span");
     messageEl.classList.add("text");
+    let messageNodes = generateMessageNodes(string, player);
 
-    let messageNodes = generateMessageNodes(string);
     messageNodes.forEach(m => {
         if(m.tagName == "SPAN") {
-            gleamTile(m.getAttribute("tile"))
+            gleamTile(m.getAttribute("tile"), player)
         }
         messageEl.append(m);
-        
     });
     newMessage.append(messageEl);
 
@@ -96,17 +98,15 @@ const addMessage = (user, string) => {
 }
 
 
-const generateMessageNodes = string => {
+const generateMessageNodes = (string, player) => {
     let words = string.split(" ");
     let newNodes = [];
     let regex = /(?:\:)\b(\w*)\b(?=\:)/g
 
     words.forEach(w => {
         let node;
-
         let first = w.substr(0, 1);
         let second = w.substr(1, w.length);
-
         let isTileCode =  alphabet.includes(first) && !isNaN(parseInt(second));
 
         if (isTileCode) {
@@ -120,11 +120,11 @@ const generateMessageNodes = string => {
             relatedTile.classList.contains("odd") ? node.classList.add("odd") : node.classList.add("even");
 
             node.addEventListener("mouseenter", () => {
-                highlightTile(tileCode, true);
+                highlightTile(tileCode, player , true);
             });
 
             node.addEventListener("mouseleave", () => {
-                highlightTile(tileCode, false);
+                highlightTile(tileCode, player, false);
             });
         } else {
             node = document.createTextNode(" " + w + " ");
@@ -137,12 +137,14 @@ const generateMessageNodes = string => {
 
 
 const annotateChat = () => {
-    let messages = document.querySelectorAll(".message .text");
+    let messages = document.querySelectorAll(".message");
 
     messages.forEach(e => {
-        let text = e.innerText;
-        let nodes = generateMessageNodes(text);
-        e.innerText = "";
+        let textNode = e.querySelector(".text");
+        let player = e.getAttribute("player");
+        let text = textNode.innerText;
+        let nodes = generateMessageNodes(text, player);
+        textNode.innerText = "";
         nodes.map(n => {
             e.append(n)
         });
@@ -150,8 +152,9 @@ const annotateChat = () => {
 }
 
 
-const highlightTile = (tileCode, highlight) => {
+const highlightTile = (tileCode, player, highlight) => {
     let relatedTile = document.querySelector(".square[name=" + tileCode + "]");
+    relatedTile.classList.add(player);
     highlight ? relatedTile.classList.add("highlight") : relatedTile.classList.remove("highlight");
 }
 

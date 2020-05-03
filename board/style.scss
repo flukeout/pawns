@@ -4,6 +4,9 @@ body {
   font-family: sans-serif;
 }
 
+$player-one: #1bada6;
+$player-two: #f3c536;
+
 .even {
   background-color: #eeeed2;
 }
@@ -56,8 +59,16 @@ $pieceClasses: "wp" "bp";
     }
   }
 
+  [player=one] .highlight:hover { outline: solid 2px $player-one; }
+  [player=two] .highlight:hover { outline: solid 2px $player-two; }
+
+  .highlight + .highlight {
+    margin-left: 6px;
+  }
+
+
   .highlight {
-    padding: 0px 5px;
+    padding: 0 5px;
     border-top: solid 1px rgba(255, 255, 255, 0.3);
     border-bottom: solid 1px rgba(0, 0, 0, 0.3);
     margin: 0 2px;
@@ -70,8 +81,13 @@ $pieceClasses: "wp" "bp";
     cursor: pointer;
     white-space: nowrap;
     position: relative;
-    animation: pop .4s ease-in-out;
+    animation: pop 0.4s ease-in-out;
     display: inline-block;
+    transition: transform 0.2s ease-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     @keyframes pop {
       50% {
@@ -79,11 +95,7 @@ $pieceClasses: "wp" "bp";
       }
     }
 
-    &:hover {
-      outline: solid 2px hsla(45, 89%, 58%, .65); 
-    }
-
-    &:before {
+    &::before {
       content: "";
       position: absolute;
       width: 200%;
@@ -96,6 +108,14 @@ $pieceClasses: "wp" "bp";
   .message {
     padding: 5px 0;
     line-height: 22px;
+
+    &[player=one] .username {
+      color: $player-one;
+    }
+
+    &[player=two] .username {
+      color: $player-two;
+    }
   }
 
   .username {
@@ -104,14 +124,6 @@ $pieceClasses: "wp" "bp";
     &::after {
       content: ":";
     }
-  }
-
-  .user-one {
-    color: #1bada6;
-  }
-
-  .user-two {
-    color: #f3c536;
   }
 }
 
@@ -125,16 +137,23 @@ $pieceClasses: "wp" "bp";
     z-index: 1;
     transition: transform 0.1s ease-out;
 
-    &:after {
+    &::after {
       display: none;
     }
 
     &.highlight {
-      transition: transform 0.2s cubic-bezier(.4,1.26,.87,1.33);
-      outline: solid 4px #ffd656;
+      transition: transform 0.2s ease-out;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       transform: scale(1.15);
       z-index: 9;
+
+      &.one {
+        outline: solid 4px lighten($player-one, 20%);
+      }
+
+      &.two {
+        outline: solid 4px $player-two;
+      }
     }
   }
 }
