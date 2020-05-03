@@ -1,5 +1,6 @@
 let inputEl;
 let boardSize = 8;
+let gleamDelay = 1000;
 let boardSelector = ".board"
 let alphabet = "abcdefghijklmnopqrstuvwxyz";
 let placedPieces = {
@@ -72,7 +73,7 @@ const gleamTile = (tileCode, player) => {
     setTimeout(function(){
         document.querySelector(".square[name=" + tileCode).classList.remove("highlight");
         document.querySelector(".square[name=" + tileCode).classList.remove(player);
-    },650);
+    }, gleamDelay);
 }
 
 const addMessage = (username, player, string) => {
