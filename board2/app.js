@@ -29,6 +29,8 @@ let pieces = [
     }
 ]
 
+let lastZindex = 1;
+
 document.addEventListener("DOMContentLoaded", function(event) { 
     generateBoard(boardSelector, boardSize);
     placePieces(boardSelector, pieces);
@@ -47,20 +49,40 @@ const keyPress = e => {
 // Adds pieces to the generated board
 const placePieces = (boardSelector, pieces) => {
     let board = document.querySelector(boardSelector);
+
     pieces.map(piece => {
         let pieceEl = document.createElement("div");
         pieceEl.className = "piece " + piece.type;
-        board.querySelector("[name=" + piece.file + piece.rank + "]").append(pieceEl);
+        pieceEl.style.width = 100/boardSize + "%";
+        pieceEl.style.height = 100/boardSize + "%";
+        pieceEl.style.height = 100/boardSize + "%";
+        pieceEl.style.bottom = ((piece.rank - 1) * 100/boardSize) + "%";
+        pieceEl.style.left = (alphabet.indexOf(piece.file) * 100/boardSize) + "%";
+
+        let shadowEl = document.createElement("div");
+        shadowEl.classList.add("shadow");
+        pieceEl.append(shadowEl);
+
+        let figureEl = document.createElement("div");
+        figureEl.classList.add("figure");
+        pieceEl.append(figureEl);
+
+        pieceEl.setAttribute("coordinates", piece.file + piece.rank );
+        board.append(pieceEl);
     });
 }
 
 const gleamTile = (tileCode, player) => {
-    document.querySelector(".square[name=" + tileCode).classList.add("highlight");
-    document.querySelector(".square[name=" + tileCode).classList.add(player);
+    let isValidMove = checkValidMove(tileCode);
+    // document.querySelector(".square[name=" + tileCode).classList.add("highlight");
+
+    highlightTile(tileCode, player);
+    if(isValidMove){
+        highlightMove(tileCode);
+    }
 
     setTimeout(function(){
-        document.querySelector(".square[name=" + tileCode).classList.remove("highlight");
-        document.querySelector(".square[name=" + tileCode).classList.remove(player);
+        clearHighlights();
     }, gleamDelay);
 }
 
@@ -170,7 +192,6 @@ const generateMessageNodes = (string, player) => {
 
 const annotateChat = () => {
     let messages = document.querySelectorAll(".message");
-
     messages.forEach(e => {
         let textNode = e.querySelector(".text");
         let player = e.getAttribute("player");
@@ -185,8 +206,15 @@ const annotateChat = () => {
 
 
 const highlightTile = (tileCode, player) => {
+
+    let relatedPiece = document.querySelector(".piece[coordinates=" + tileCode + "]");
+    if(relatedPiece) {
+        relatedPiece.classList.add("highlight");
+    }
+
     let relatedTile = document.querySelector(".square[name=" + tileCode + "]");
-    relatedTile.classList.add(player);
+    lastZindex++;
+    relatedTile.style.zIndex = lastZindex;
     relatedTile.classList.add("highlight");
 }
 
@@ -224,29 +252,38 @@ const highlightMove = (moveCode, player) => {
 
     let piecePosition = piece.file + piece.rank;
     let originTile = document.querySelector(".square[name=" + piecePosition + "]");
-    originTile.classList.add("move-up");
 
-    originTile.append(arrowEl);
+    let destinationTile = document.querySelector(".square[name=" + moveCode + "]");
+
+    let board = document.querySelector(boardSelector);
+
+    arrowEl.style.width = 100/boardSize + "%";
+    arrowEl.style.left = (alphabet.indexOf(file) *100/boardSize) + "%";
+    arrowEl.style.bottom = ((rank - length - 1) * 100/boardSize) + "%";
+    arrowEl.style.height = ((length + 1)* 100/boardSize) + "%";
+
+    let pieceCode = piece.file + piece.rank;
+    let pieceEl = document.querySelector(".piece[coordinates="+pieceCode+"]");
+
+    pieceEl.classList.add("lift");
+    board.append(arrowEl);
 }
 
 const clearHighlights = () => {
-    
+
+    let removeClasses = ["move-origin", "lift", "move-up", "highlight" ]
+
     let arrow = document.querySelector(".arrow");
     if(arrow) {
         arrow.parentNode.removeChild(arrow);
     }
-    let moveOriginEl = document.querySelector(".move-origin");
-    if(moveOriginEl) {
-        moveOriginEl.classList.remove("move-origin");
-    }
-    let highlightedEl = document.querySelector(".square.highlight");
-    if(highlightedEl){
-        highlightedEl.classList.remove("highlight");
-    }
-    let movedUpEl = document.querySelector(".square.move-up");
-    if(movedUpEl){
-        highlightedEl.classList.remove("move-up");
-    }
+
+    removeClasses.forEach(className => {
+        let els = document.querySelectorAll(".board ." + className);
+        if(els) {
+            els.forEach(e => e.classList.remove(className));
+        }
+    });
 }
 
 
