@@ -207,7 +207,7 @@ body {
     opacity: 1; } }
   .arrow.length-1 {
     height: 200%;
-    background-image: url("../img/arrow1.svg"); }
+    background-image: url("../img/arrow1.svg?1"); }
   .arrow.length-2 {
     height: 300%;
-    background-image: url("../img/arrow2.svg"); }
+    background-image: url("../img/arrow2.svg?1"); }
