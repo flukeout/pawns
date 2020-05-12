@@ -1,0 +1,130 @@
+body {
+  background: #2d2a27;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+.tile {
+  background: #22201d;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  border-bottom: solid 4px #171513;
+
+  label {
+    font-size: 160%;
+    text-align: center;
+    display: block;
+    color: #c3c3c2;
+  }
+
+  .image-wrapper {
+    width: 50%;
+    margin: 15% auto 10% auto;
+    height: 50%;
+  }
+
+  &:hover {
+    background: #393633;
+    border-bottom: solid 4px #22201d;
+    cursor: pointer;
+  }
+}
+
+
+#shadow {
+  opacity: 0;
+  transform: scale(.5);
+
+}
+.tile:hover #shadow {
+  animation: shadowShow .5s ease-out forwards;
+  transform-origin: 37% 89%;
+}
+
+@keyframes shadowShow {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale(.5);
+  }
+
+  100% {
+    opacity: .4;
+    transform: scale(1);
+  }
+}
+
+
+.tile:hover #hand {
+  animation: pickUp .5s linear forwards;
+  transform-orign: 65% 40%;
+}
+
+@keyframes pickUp {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    transform: translateY(5%) rotate(0deg);
+    animation-timing-function: ease-out;
+  }
+
+  100% {
+    transform: translateY(-30%) translateX(30%) rotate(20deg);
+  }
+}
+
+#pawn {
+  transform-origin: 50% 50%;
+}
+
+.tile:hover #pawn {
+  animation: pawnPickup .5s linear forwards;
+}
+
+@keyframes pawnPickup {
+  0% {
+    transform-origin: 37% 89%;
+  }
+
+  50% {
+    transform: scaleY(.9) translateY(0) rotate(0) translateX(0);
+    transform-origin: 37% 89%;
+    animation-timing-function: ease-out;
+  }
+
+  100% {
+    transform-origin: 40% 50%;
+    transform: scaleY(1) translateY(-18%) translateX(9%) rotate(16deg);
+  }
+}
+
+
+#thumb {
+  transform-origin: 75% 40%;
+}
+
+.tile:hover #thumb {
+  animation: thumbMove .5s linear forwards;
+}
+
+@keyframes thumbMove {
+  0% {
+    tranform: none;
+  }
+
+  50% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(8deg);
+  }
+}
