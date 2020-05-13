@@ -47,15 +47,20 @@ body {
 
 #arrow {
   opacity: 0;
+  transform-origin: 50% 50%;
 }
 
-.tile:hover #arrow {
-  
-  transition: opacity .2s ease-out;
-  // animation: arrow .2s ease-out forwards;
-  animation-delay: $duration;
-  
+.tile:active #arrow {
+  animation: arrow .2s ease-out forwards;
+  animation-delay: 0s;
 }
+
+.tile:focus #arrow {
+  animation: arrow .2s ease-out forwards;
+  animation-delay: 0s;
+  border: solid 1px white;
+}
+
 
 @keyframes arrow {
   0% {
@@ -63,7 +68,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    opacity: .4;
+    opacity: .5;
     transform: translateX(-25%);
   }
 }
@@ -106,7 +111,7 @@ svg {
 }
 
 
-.tile.hover #shadow {
+.tile:hover #shadow {
   opacity: .2;
   transform: scale(.8);
 }
@@ -117,11 +122,18 @@ svg {
   transition: transform $duration ease-in;
 }
 
-.tile.hover #hand {
+.tile:hover #hand {
   transition: transform $duration ease-out;
   transform: rotate(20deg) translateY(-7%);
   animation-delay: $duration;
 }
+
+.tile:active #hand {
+  transition: transform $duration ease-out;
+  transform: rotate(20deg) translateY(-7%) translateX(-4%);
+  animation-delay: $duration;
+}
+
 
 #pawn {
   transition: transform $duration ease-in;
@@ -129,11 +141,19 @@ svg {
   transition-delay: 0s;
 }
 
-.tile.hover #pawn {
+.tile:hover #pawn {
   transition: transform calc(#{$duration}) ease-out;
   transform: translateY(-24%) translateX(5%) rotate(20deg);
   transition-delay: 0s;
 }
+
+.tile:active #pawn {
+  transition: transform calc(#{$duration}) ease-out;
+  transform: translateY(-26%) translateX(1%) rotate(25deg);
+  transition-delay: 0s;
+}
+
+
 
 
 #thumb {
@@ -142,7 +162,7 @@ svg {
   transition-delay: calc(#{$duration} * .9);
 }
 
-.tile.hover #thumb {
+.tile:hover #thumb {
   transition: transform calc(#{$duration} / 2) ease-out;
   transform: rotate(15deg);
 }
