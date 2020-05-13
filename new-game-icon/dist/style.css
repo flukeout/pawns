@@ -1,0 +1,107 @@
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif; }
+
+.tile {
+  background: #22201d;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  border-bottom: solid 4px #171513;
+  transition: background .15s ease-out; }
+  .tile label {
+    font-size: 160%;
+    text-align: center;
+    display: block;
+    color: #c3c3c2; }
+  .tile .image-wrapper {
+    width: 50%;
+    margin: 15% auto 10% auto;
+    height: 50%; }
+  .tile:hover {
+    background: #393633;
+    border-bottom: solid 4px #22201d;
+    cursor: pointer; }
+
+#shadow {
+  opacity: .4;
+  transform: scale(1);
+  transform-origin: 37% 89%;
+  transition: all 0.25s ease-out; }
+
+#arrow {
+  opacity: 0; }
+
+.tile:hover #arrow {
+  transition: opacity .2s ease-out;
+  animation-delay: 0.25s; }
+
+@keyframes arrow {
+  0% {
+    opacity: 0;
+    transform: translateX(0); }
+  100% {
+    opacity: .4;
+    transform: translateX(-25%); } }
+
+#gleam {
+  opacity: 0;
+  transform-origin: 10% 47%; }
+
+.tile:hover #gleam {
+  animation: gleam .5s ease-out;
+  animation-delay: calc(0.25s * .8); }
+
+@keyframes gleam {
+  0% {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.6); }
+  15% {
+    opacity: .2; }
+  50% {
+    opacity: .7;
+    transform: rotate(0) scale(0.8); }
+  85% {
+    opacity: .2; }
+  100% {
+    opacity: 0;
+    transform: rotate(5deg) scale(0.6); } }
+
+svg {
+  overflow: visible; }
+
+.tile.hover #shadow {
+  opacity: .2;
+  transform: scale(0.8); }
+
+#hand {
+  transform-origin: 100% 50%;
+  transition: transform 0.25s ease-in; }
+
+.tile.hover #hand {
+  transition: transform 0.25s ease-out;
+  transform: rotate(20deg) translateY(-7%);
+  animation-delay: 0.25s; }
+
+#pawn {
+  transition: transform 0.25s ease-in;
+  transform-origin: 50% 50%;
+  transition-delay: 0s; }
+
+.tile.hover #pawn {
+  transition: transform calc(0.25s) ease-out;
+  transform: translateY(-24%) translateX(5%) rotate(20deg);
+  transition-delay: 0s; }
+
+#thumb {
+  transform-origin: 75% 40%;
+  transition: transform calc(0.25s / 2) ease-out;
+  transition-delay: calc(0.25s * .9); }
+
+.tile.hover #thumb {
+  transition: transform calc(0.25s / 2) ease-out;
+  transform: rotate(15deg); }
