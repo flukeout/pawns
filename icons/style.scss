@@ -1,0 +1,290 @@
+$duration: .2s;
+
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+.tile {
+  background: #22201d;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  margin: 20px;
+  border-bottom: solid 4px #171513;
+  transition: background .15s ease-out;
+  position: relative;
+
+  label {
+    font-size: 160%;
+    text-align: center;
+    display: block;
+    color: #c3c3c2;
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+  }
+
+  .image-wrapper {
+    width: 50%;
+    padding-top: 50%;
+    height: auto;
+    top: 10%;
+    left: 25%;
+    position: absolute;
+  }
+
+  &:hover {
+    background: #393633;
+    border-bottom: solid 4px #22201d;
+    cursor: pointer;
+  }
+}
+
+.new-game-tile {
+  .image-wrapper {
+    width: 36%;
+    padding-top: 36%;
+    height: auto;
+    left: 32%;
+    top: 20%;
+    position: absolute;
+  }
+
+  .shadow {
+    background: black;
+    position: absolute;
+    bottom: -5%;
+    left: -5%;
+    width: 68%;
+    height: 10%;
+    border-radius: 50%;
+    opacity: .4;
+    transform: scale(1);
+    transition: all $duration ease-out;
+  }
+
+  .hand {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-image: url(../img/pawn-hand.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-orign: bottom;
+    transition: transform $duration ease-in;
+  }
+
+  &:hover {
+    .shadow {
+      opacity: .4;
+      transform: scale(.9);
+    }
+
+    .hand {
+      transition: transform $duration ease-out;
+      transform: rotate(12deg) translateY(-15%);
+      animation-delay: $duration;
+    }
+  }
+}
+
+.puzzle-tile {
+
+  .image-wrapper {
+    width: 40%;
+    padding-top: 40%;
+    height: auto;
+    top: 15%;
+    left: 30%;
+    position: absolute;
+  }
+
+  .puzzle {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-image: url(../img/puzzle.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform $duration;
+  }
+
+  .checkmark {
+    width: 40%;
+    height: 40%;
+    background-size: contain;
+    top: 60%;
+    left: 60%;
+    background-repeat: no-repeat;
+    position: absolute;
+    background: #86a956;
+    border-radius: 10%;
+    opacity: 0;
+    transform: scale(.7);
+    box-shadow: -4px -4px 0px rgba(0,0,0,.1);
+    transition: transform $duration cubic-bezier(.2,1.22,.84,1.33);
+  }
+
+  &:hover {
+    .checkmark {
+      background-image: url(../img/checkmark.png);
+      background-position: center;
+      background-size: contain;
+      opacity: 1;
+      transform: scale(1) ;
+    }
+
+    .puzzle {
+      transition-delay: 0s;
+      transform: translateX(-5%) translateY(-5%) scale(.96);
+      transition: all $duration ease-out;
+    }
+  }
+}
+
+.lessons-tile {
+
+  .brim,
+  .cap,
+  .tassle,
+  .tassle-holder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+.brim {
+  background-image: url(../img/lessons/brim.png);
+  transition: transform $duration cubic-bezier(.25,1.04,.74,1.45);
+}
+
+.tassle-holder {
+    transition: transform $duration cubic-bezier(.25,1.04,.74,1.45);
+}
+
+&:hover .brim,
+&:hover .tassle-holder
+ {
+  transform: rotate(-12deg) translateY(-5%);
+}
+
+.cap {
+  background-image: url(../img/lessons/cap.png);
+  transition: transform $duration cubic-bezier(.25,1.04,.74,1.45);
+}
+
+&:hover .cap {
+  transform: translateY(-4%) rotate(-4deg);
+}
+
+.tassle {
+  transition: all $duration cubic-bezier(.25,1.04,.74,1.45);
+  background-image: url(../img/lessons/tassle.png);
+  transform-origin: 91% 31%;
+  top: 0%;
+}
+
+&:hover .tassle {
+  animation: swing linear calc(#{$duration} * 3);
+  transform: rotate(12deg);
+}
+
+ @keyframes swing {
+    0% {
+      animation-timing-function: ease-out;
+      transform: rotate(0deg);
+    }
+
+    // 30% {
+    //   animation-timing-function: ease-in;
+    //   transform: rotate(12deg);
+      
+    // }
+
+
+    60% {
+      transform: rotate(20deg);
+      animation-timing-function: ease-in-out;
+    }
+
+
+
+
+    100% {
+      transform: rotate(12deg);
+    }
+}
+
+}
+
+.computer-tile {
+  .monitor,
+  .base,
+  .eyes
+    {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  .monitor {
+    background-image: url(../img/computer/monitor.png);
+    transition: transform $duration ease-out;
+    
+  }
+
+  &:hover .monitor {
+    transition: transform $duration cubic-bezier(.25,1.04,.74,1.45);
+    transform: translateY(-5%);
+  }
+
+  .base {
+    background-image: url(../img/computer/base.png);
+  }
+
+  .eyes {
+    background-image: url(../img/computer/eyes.png);
+    transition: all $duration ease-out;
+    transform-origin: 50% 30%;
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  &:hover .eyes {
+    animation: eyes $duration ease-in-out forwards;
+    opacity: 1;
+    animation-delay: calc(#{$duration} * .5);
+  }
+
+  @keyframes eyes {
+    0% {
+      transform: scaleY(0);
+    }
+    50% {
+      transform: scaleY(1.2);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+}
+

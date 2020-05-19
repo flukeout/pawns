@@ -1,0 +1,217 @@
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif; }
+
+.tile {
+  background: #22201d;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  margin: 20px;
+  border-bottom: solid 4px #171513;
+  transition: background .15s ease-out;
+  position: relative; }
+  .tile label {
+    font-size: 160%;
+    text-align: center;
+    display: block;
+    color: #c3c3c2;
+    position: absolute;
+    bottom: 10%;
+    width: 100%; }
+  .tile .image-wrapper {
+    width: 50%;
+    padding-top: 50%;
+    height: auto;
+    top: 10%;
+    left: 25%;
+    position: absolute; }
+  .tile:hover {
+    background: #393633;
+    border-bottom: solid 4px #22201d;
+    cursor: pointer; }
+
+.new-game-tile .image-wrapper {
+  width: 36%;
+  padding-top: 36%;
+  height: auto;
+  left: 32%;
+  top: 20%;
+  position: absolute; }
+
+.new-game-tile .shadow {
+  background: black;
+  position: absolute;
+  bottom: -5%;
+  left: -5%;
+  width: 68%;
+  height: 10%;
+  border-radius: 50%;
+  opacity: .4;
+  transform: scale(1);
+  transition: all 0.2s ease-out; }
+
+.new-game-tile .hand {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-image: url(../img/pawn-hand.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-orign: bottom;
+  transition: transform 0.2s ease-in; }
+
+.new-game-tile:hover .shadow {
+  opacity: .4;
+  transform: scale(0.9); }
+
+.new-game-tile:hover .hand {
+  transition: transform 0.2s ease-out;
+  transform: rotate(12deg) translateY(-15%);
+  animation-delay: 0.2s; }
+
+.puzzle-tile .image-wrapper {
+  width: 40%;
+  padding-top: 40%;
+  height: auto;
+  top: 15%;
+  left: 30%;
+  position: absolute; }
+
+.puzzle-tile .puzzle {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-image: url(../img/puzzle.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.2s; }
+
+.puzzle-tile .checkmark {
+  width: 40%;
+  height: 40%;
+  background-size: contain;
+  top: 60%;
+  left: 60%;
+  background-repeat: no-repeat;
+  position: absolute;
+  background: #86a956;
+  border-radius: 10%;
+  opacity: 0;
+  transform: scale(0.7);
+  box-shadow: -4px -4px 0px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s cubic-bezier(0.2, 1.22, 0.84, 1.33); }
+
+.puzzle-tile:hover .checkmark {
+  background-image: url(../img/checkmark.png);
+  background-position: center;
+  background-size: contain;
+  opacity: 1;
+  transform: scale(1); }
+
+.puzzle-tile:hover .puzzle {
+  transition-delay: 0s;
+  transform: translateX(-5%) translateY(-5%) scale(0.96);
+  transition: all 0.2s ease-out; }
+
+.lessons-tile .brim,
+.lessons-tile .cap,
+.lessons-tile .tassle,
+.lessons-tile .tassle-holder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%; }
+
+.lessons-tile .brim {
+  background-image: url(../img/lessons/brim.png);
+  transition: transform 0.2s cubic-bezier(0.25, 1.04, 0.74, 1.45); }
+
+.lessons-tile .tassle-holder {
+  transition: transform 0.2s cubic-bezier(0.25, 1.04, 0.74, 1.45); }
+
+.lessons-tile:hover .brim,
+.lessons-tile:hover .tassle-holder {
+  transform: rotate(-12deg) translateY(-5%); }
+
+.lessons-tile .cap {
+  background-image: url(../img/lessons/cap.png);
+  transition: transform 0.2s cubic-bezier(0.25, 1.04, 0.74, 1.45); }
+
+.lessons-tile:hover .cap {
+  transform: translateY(-4%) rotate(-4deg); }
+
+.lessons-tile .tassle {
+  transition: all 0.2s cubic-bezier(0.25, 1.04, 0.74, 1.45);
+  background-image: url(../img/lessons/tassle.png);
+  transform-origin: 91% 31%;
+  top: 0%; }
+
+.lessons-tile:hover .tassle {
+  animation: swing linear calc(0.2s * 3);
+  transform: rotate(12deg); }
+
+@keyframes swing {
+  0% {
+    animation-timing-function: ease-out;
+    transform: rotate(0deg); }
+  60% {
+    transform: rotate(20deg);
+    animation-timing-function: ease-in-out; }
+  100% {
+    transform: rotate(12deg); } }
+
+.computer-tile .monitor,
+.computer-tile .base,
+.computer-tile .eyes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%; }
+
+.computer-tile .monitor {
+  background-image: url(../img/computer/monitor.png);
+  transition: transform 0.2s ease-out; }
+
+.computer-tile:hover .monitor {
+  transition: transform 0.2s cubic-bezier(0.25, 1.04, 0.74, 1.45);
+  transform: translateY(-5%); }
+
+.computer-tile .base {
+  background-image: url(../img/computer/base.png); }
+
+.computer-tile .eyes {
+  background-image: url(../img/computer/eyes.png);
+  transition: all 0.2s ease-out;
+  transform-origin: 50% 30%;
+  opacity: 0;
+  transform: scaleY(0); }
+
+.computer-tile:hover .eyes {
+  animation: eyes 0.2s ease-in-out forwards;
+  opacity: 1;
+  animation-delay: calc(0.2s * .5); }
+
+@keyframes eyes {
+  0% {
+    transform: scaleY(0); }
+  50% {
+    transform: scaleY(1.2); }
+  100% {
+    transform: scaleY(1); } }
