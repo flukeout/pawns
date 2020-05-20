@@ -167,72 +167,61 @@ body {
     background-size: 100%;
   }
 
-.brim {
-  background-image: url(../img/lessons/brim.png);
-  transition: transform $duration cubic-bezier(.25,1.04,.74,1.45);
-}
-
-.tassle-holder {
+  .brim {
+    background-image: url(../img/lessons/brim.png);
     transition: transform $duration cubic-bezier(.25,1.04,.74,1.45);
-}
+  }
 
-&:hover .brim,
-&:hover .tassle-holder
- {
-  transform: rotate(-12deg) translateY(-5%);
-}
+  .tassle-holder {
+      transition: transform $duration cubic-bezier(.25,1.04,.74,1.45);
+  }
 
-.cap {
-  background-image: url(../img/lessons/cap.png);
-  transition: transform $duration cubic-bezier(.25,1.04,.74,1.45);
-}
+  &:hover .brim,
+  &:hover .tassle-holder
+   {
+    transform: rotate(-12deg) translateY(-5%);
+  }
 
-&:hover .cap {
-  transform: translateY(-4%) rotate(-4deg);
-}
+  .cap {
+    background-image: url(../img/lessons/cap.png);
+    transition: transform $duration cubic-bezier(.25,1.04,.74,1.45);
+  }
 
-.tassle {
-  transition: all $duration cubic-bezier(.25,1.04,.74,1.45);
-  background-image: url(../img/lessons/tassle.png);
-  transform-origin: 91% 31%;
-  top: 0%;
-}
+  &:hover .cap {
+    transform: translateY(-4%) rotate(-4deg);
+  }
 
-&:hover .tassle {
-  animation: swing linear calc(#{$duration} * 4);
-  transform: rotate(12deg);
-}
+  .tassle {
+    transition: all $duration cubic-bezier(.25,1.04,.74,1.45);
+    background-image: url(../img/lessons/tassle.png);
+    transform-origin: 91% 31%;
+    top: 0%;
+  }
 
- @keyframes swing {
-    0% {
-      animation-timing-function: ease-out;
-      transform: rotate(0deg);
-    }
+  &:hover .tassle {
+    animation: swing linear calc(#{$duration} * 4);
+    transform: rotate(12deg);
+  }
 
-    // 30% {
-    //   animation-timing-function: ease-in;
-    //   transform: rotate(12deg);
-      
-    // }
+   @keyframes swing {
+      0% {
+        animation-timing-function: ease-out;
+        transform: rotate(0deg);
+      }
 
+      30% {
+        transform: rotate(20deg);
+        animation-timing-function: ease-in-out;
+      }
 
-    30% {
-      transform: rotate(20deg);
-      animation-timing-function: ease-in-out;
-    }
+      70% {
+        transform: rotate(8deg);
+      }
 
-
-    70% {
-      transform: rotate(8deg);
-    }
-    
-    100% {
-      transform: rotate(12deg);
-    }
-
-
-}
-
+      100% {
+        transform: rotate(12deg);
+      }
+  }
 }
 
 .computer-tile {
