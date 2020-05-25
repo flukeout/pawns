@@ -1,0 +1,234 @@
+$duration: 0.2s;
+
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  flex-wrap: wrap;
+}
+
+.tile {
+  background: #22201d;
+  width: 168px;
+  height: 168px;
+  border-radius: 10px;
+  margin: 20px;
+  border-bottom: solid 4px #171513;
+  transition: background 0.15s ease-out;
+  position: relative;
+
+  label {
+    font-size: 100%;
+    text-align: center;
+    display: block;
+    color: #c3c3c2;
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+  }
+
+  .image-wrapper {
+    margin: 30px auto 0 auto;
+    position: relative;
+
+    .sprite {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url(../img/spritesheet.png);
+      background-size: 400px;
+      background-repeat: no-repeat;
+
+      &.no-bg {
+        background-image: none;
+      }
+    }
+  }
+
+  &:hover {
+    background: #393633;
+    border-bottom: solid 4px #22201d;
+    cursor: pointer;
+  }
+}
+
+.tile-new-game {
+  .image-wrapper {
+    width: 64px;
+    height: 65px;
+  }
+
+  .hand {
+    transform-orign: bottom;
+    transition: transform $duration ease-in;
+  }
+
+  .shadow {
+    background: black;
+    position: absolute;
+    bottom: -5%;
+    left: -5%;
+    width: 68%;
+    height: 10%;
+    border-radius: 50%;
+    opacity: 0.4;
+    transform: scale(1);
+    transition: all $duration ease-out;
+  }
+
+  &:hover {
+    .shadow {
+      opacity: 0.4;
+      transform: scale(0.9);
+    }
+
+    .hand {
+      transition: transform $duration ease-out;
+      transform: rotate(12deg) translateY(-15%);
+      animation-delay: $duration;
+    }
+  }
+}
+
+.tile-puzzles {
+  .image-wrapper {
+    width: 70px;
+    height: 73px;
+  }
+
+  .puzzle {
+    transition: transform $duration;
+    background-position: -240px -80px;
+  }
+
+  .checkmark {
+    width: 44%;
+    padding-top: 44%;
+    background-size: contain;
+    top: 56%;
+    left: 56%;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    position: absolute;
+    background: #86a956;
+    opacity: 0;
+    transform: scale(0.7);
+    box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.1);
+    transition: transform $duration cubic-bezier(0.2, 1.22, 0.84, 1.33);
+  }
+
+  &:hover {
+    .checkmark {
+      background-image: url(../img/spritesheet.png);
+      background-size: 400px;
+      opacity: 1;
+      transform: scale(1) rotate(10deg);
+      background-position: -320px -80px;
+    }
+
+    .puzzle {
+      transition-delay: 0s;
+      transform: translateX(-5%) translateY(-5%) scale(0.96);
+      transition: all $duration ease-out;
+    }
+  }
+}
+
+.tile-lessons {
+  .image-wrapper {
+    width: 78px;
+    height: 68px;
+  }
+
+  .brim {
+    background-position: 0 -80px;
+    transition: transform $duration cubic-bezier(0.25, 1.04, 0.74, 1.45);
+  }
+
+  .tassle-holder {
+    transition: transform $duration cubic-bezier(0.25, 1.04, 0.74, 1.45);
+  }
+
+  &:hover .brim,
+  &:hover .tassle-holder {
+    transform: rotate(-12deg) translateY(-5%);
+  }
+
+  .cap {
+    background-position: -80px -80px;
+    transition: transform $duration cubic-bezier(0.25, 1.04, 0.74, 1.45);
+  }
+
+  &:hover .cap {
+    transform: translateY(-4%) rotate(-4deg);
+  }
+
+  .tassle {
+    background-position: -160px -80px;
+    transition: transform $duration cubic-bezier(0.25, 1.04, 0.74, 1.45);
+    transform-origin: 91% 31%;
+    top: 0%;
+  }
+
+  &:hover .tassle {
+    animation: swing linear calc(#{$duration} * 4);
+    transform: rotate(12deg);
+  }
+
+  @keyframes swing {
+    0% {
+      animation-timing-function: ease-out;
+      transform: rotate(0deg);
+    }
+
+    30% {
+      transform: rotate(20deg);
+      animation-timing-function: ease-in-out;
+    }
+
+    70% {
+      transform: rotate(8deg);
+    }
+
+    100% {
+      transform: rotate(12deg);
+    }
+  }
+}
+
+.tile-vs-computer {
+  .image-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .monitor {
+    background-position: -80px 0;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .monitor {
+    transition: transform $duration cubic-bezier(0.25, 1.04, 0.74, 1.45);
+    transform: translateY(-5%);
+  }
+
+  .base {
+    background-position: -160px 0;
+  }
+
+  .board {
+    background-position: -240px 0;
+    clip-path: circle(0% at 50% 26%);
+    transition: clip-path $duration ease-in;
+    opacity: 0.7;
+  }
+
+  &:hover .board {
+    clip-path: circle(30% at 50% 26%);
+  }
+}
