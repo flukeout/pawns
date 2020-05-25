@@ -1,4 +1,5 @@
 $duration: 0.2s;
+$spritesheet-image: "../img/spritesheet@3x-optimized.png";
 
 body {
   background: #2d2a27;
@@ -11,7 +12,7 @@ body {
 }
 
 .tile {
-  background: #22201d;
+  background: #22201D;
   width: 168px;
   height: 168px;
   border-radius: 10px;
@@ -40,7 +41,7 @@ body {
       position: absolute;
       top: 0;
       left: 0;
-      background-image: url(../img/spritesheet@3x-optimized.png);
+      background-image: url($spritesheet-image);
       background-size: 400px;
       background-repeat: no-repeat;
 
@@ -65,7 +66,6 @@ body {
   }
 
   .hand {
-    transform-orign: bottom;
     transition: transform $duration ease-in;
   }
 
@@ -101,6 +101,14 @@ body {
     width: 70px;
     height: 73px;
     margin-top: 33px;
+
+    .question-mark {
+      width: 44%;
+      height: auto;
+      padding-top: 44%;
+      top: 56%;
+      left: 56%;
+    }
   }
 
   .puzzle {
@@ -108,35 +116,27 @@ body {
     background-position: -240px -80px;
   }
 
-  .checkmark {
-    width: 44%;
-    padding-top: 44%;
-    background-size: contain;
-    top: 56%;
-    left: 56%;
+  .question-mark {
     border-radius: 50%;
-    background-repeat: no-repeat;
     position: absolute;
-    background: #86a956;
+    background-color: #86a956;
     opacity: 0;
     transform: scale(0.7);
     box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.1);
     transition: transform $duration cubic-bezier(0.2, 1.22, 0.84, 1.33);
+    background-position: -320px -80px;
   }
 
   &:hover {
-    .checkmark {
-      background-image: url(../img/spritesheet.png);
-      background-size: 400px;
+    .question-mark {
       opacity: 1;
       transform: scale(1) rotate(10deg);
-      background-position: -320px -80px;
     }
 
     .puzzle {
-      transition-delay: 0s;
       transform: translateX(-5%) translateY(-5%) scale(0.96);
       transition: all $duration ease-out;
+      transition-delay: 0s;
     }
   }
 }

@@ -8,7 +8,7 @@ body {
   flex-wrap: wrap; }
 
 .tile {
-  background: #22201d;
+  background: #22201D;
   width: 168px;
   height: 168px;
   border-radius: 10px;
@@ -33,7 +33,7 @@ body {
       position: absolute;
       top: 0;
       left: 0;
-      background-image: url(../img/spritesheet@3x-optimized.png);
+      background-image: url("../img/spritesheet@3x-optimized.png");
       background-size: 400px;
       background-repeat: no-repeat; }
       .tile .image-wrapper .sprite.no-bg {
@@ -49,7 +49,6 @@ body {
   margin-top: 39px; }
 
 .tile-new-game .hand {
-  transform-orign: bottom;
   transition: transform 0.2s ease-in; }
 
 .tile-new-game .shadow {
@@ -77,37 +76,35 @@ body {
   width: 70px;
   height: 73px;
   margin-top: 33px; }
+  .tile-puzzles .image-wrapper .question-mark {
+    width: 44%;
+    height: auto;
+    padding-top: 44%;
+    top: 56%;
+    left: 56%; }
 
 .tile-puzzles .puzzle {
   transition: transform 0.2s;
   background-position: -240px -80px; }
 
-.tile-puzzles .checkmark {
-  width: 44%;
-  padding-top: 44%;
-  background-size: contain;
-  top: 56%;
-  left: 56%;
+.tile-puzzles .question-mark {
   border-radius: 50%;
-  background-repeat: no-repeat;
   position: absolute;
-  background: #86a956;
+  background-color: #86a956;
   opacity: 0;
   transform: scale(0.7);
   box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s cubic-bezier(0.2, 1.22, 0.84, 1.33); }
-
-.tile-puzzles:hover .checkmark {
-  background-image: url(../img/spritesheet.png);
-  background-size: 400px;
-  opacity: 1;
-  transform: scale(1) rotate(10deg);
+  transition: transform 0.2s cubic-bezier(0.2, 1.22, 0.84, 1.33);
   background-position: -320px -80px; }
 
+.tile-puzzles:hover .question-mark {
+  opacity: 1;
+  transform: scale(1) rotate(10deg); }
+
 .tile-puzzles:hover .puzzle {
-  transition-delay: 0s;
   transform: translateX(-5%) translateY(-5%) scale(0.96);
-  transition: all 0.2s ease-out; }
+  transition: all 0.2s ease-out;
+  transition-delay: 0s; }
 
 .tile-lessons .image-wrapper {
   width: 78px;
