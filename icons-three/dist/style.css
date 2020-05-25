@@ -17,7 +17,7 @@ body {
   transition: background 0.15s ease-out;
   position: relative; }
   .tile label {
-    font-size: 100%;
+    font-size: 15px;
     text-align: center;
     display: block;
     color: #c3c3c2;
@@ -45,7 +45,8 @@ body {
 
 .tile-new-game .image-wrapper {
   width: 64px;
-  height: 65px; }
+  height: 65px;
+  margin-top: 39px; }
 
 .tile-new-game .hand {
   transform-orign: bottom;
@@ -74,7 +75,8 @@ body {
 
 .tile-puzzles .image-wrapper {
   width: 70px;
-  height: 73px; }
+  height: 73px;
+  margin-top: 33px; }
 
 .tile-puzzles .puzzle {
   transition: transform 0.2s;
@@ -109,7 +111,8 @@ body {
 
 .tile-lessons .image-wrapper {
   width: 78px;
-  height: 68px; }
+  height: 68px;
+  margin-top: 37px; }
 
 .tile-lessons .brim {
   background-position: 0 -80px;
@@ -153,7 +156,8 @@ body {
 
 .tile-vs-computer .image-wrapper {
   width: 70px;
-  height: 70px; }
+  height: 70px;
+  margin-top: 40px; }
 
 .tile-vs-computer .monitor {
   background-position: -80px 0;
