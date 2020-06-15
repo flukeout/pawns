@@ -53,21 +53,39 @@ body {
   transition: transform 0.2s ease-out; }
 
 .tile-chess-today .inner-ring {
-  background-position: -160px 0; }
+  background-position: -160px 0;
+  transition: transform 0.2s ease-out; }
 
 .tile-chess-today:hover .inner-ring {
-  animation: ringPop 0.2s infinite linear;
-  animation-delay: .05s; }
-
-@keyframes ringPop {
-  50% {
-    transform: scale(1.08); } }
+  transform: scale(1.1);
+  animation: ringPopOne 0.2s linear, ringPopTwo 0.2s linear;
+  animation-delay: .05s;
+  animation-delay: 0.05s, calc(0.2s + .05s); }
 
 .tile-chess-today .outer-ring {
-  background-position: -80px 0; }
+  background-position: -80px 0;
+  transition: transform 0.2s ease-out; }
 
 .tile-chess-today:hover .outer-ring {
-  animation: ringPop 0.2s infinite linear; }
+  transform: scale(1.1);
+  animation: ringPopOne 0.2s linear, ringPopTwo 0.2s linear;
+  animation-delay: 0s, 0.2s; }
+
+@keyframes ringPopOne {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.1); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes ringPopTwo {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.1); }
+  100% {
+    transform: scale(1.1); } }
 
 .tile-analysis .image-wrapper {
   width: 80px;
@@ -100,7 +118,169 @@ body {
     background-image: linear-gradient(45deg, #b8d0e0 25%, transparent 25%), linear-gradient(-45deg, #b8d0e0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #b8d0e0 75%), linear-gradient(-45deg, transparent 75%, #b8d0e0 75%);
     background-size: 60px 60px;
     background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
-    transition: transform calc(0.2s * 4) ease-in-out; }
+    transition: transform calc(0.2s * 2) ease-in-out; }
+  .tile-analysis .board-viewer .checkmark {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/spritesheet@3x.png");
+    background-size: 400px;
+    background-repeat: no-repeat;
+    background-position: -160px -80px;
+    opacity: 0; }
 
 .tile-analysis:hover .board {
-  transform: translateX(60px) translateY(60px); }
+  transform: scale(1.7) translateX(45px) translateY(45px); }
+
+.tile-analysis:hover .checkmark {
+  transition: opacity 0.2s ease-out;
+  opacity: 1;
+  transition-delay: calc(0.2s * 2); }
+
+.tile-arena .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px; }
+
+.tile-arena .helmet {
+  background-position: 0 -160px;
+  transition: transform 0.2s ease-out; }
+
+.tile-arena:hover .helmet {
+  transform: translateY(5px); }
+
+.tile-arena .sword-left {
+  background-position: -80px -160px;
+  transform-origin: bottom left;
+  transition: transform 0.2s ease-in-out;
+  transition-timing-function: cubic-bezier(0.61, 0.44, 0.44, 1.45); }
+
+.tile-arena:hover .sword-left {
+  transition-timing-function: ease-in-out;
+  transform: translateY(10px) translateX(10px) scale(0.9) rotate(-65deg); }
+
+.tile-arena .sword-right {
+  background-position: -160px -160px;
+  transform-origin: bottom right;
+  transition: transform 0.2s ease-in-out;
+  transition-timing-function: cubic-bezier(0.61, 0.44, 0.44, 1.45); }
+
+.tile-arena:hover .sword-right {
+  transition-timing-function: ease-in-out;
+  transform: translateY(10px) translateX(-10px) scale(0.9) rotate(65deg); }
+
+.tile-puzzle-rush .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px; }
+
+.tile-puzzle-rush .puzzle-wrapper.sprite {
+  background-image: none; }
+
+.tile-puzzle-rush:hover .puzzle-wrapper {
+  animation: speedShake 0.2s linear infinite; }
+
+@keyframes speedShake {
+  0% {
+    transform: translateX(0) translateY(0); }
+  25% {
+    transform: translateX(-1px) translateY(1px); }
+  50% {
+    transform: translateX(0) translateY(0); }
+  75% {
+    transform: translateX(1px) translateY(-1px); } }
+
+.tile-puzzle-rush .puzzle {
+  background-position: 0 -240px;
+  transition: transform 0.2s ease-in-out; }
+
+.tile-puzzle-rush .puzzle-flipped {
+  background-position: -80px -240px;
+  opacity: 0;
+  transition: transform 0.2s ease-in-out; }
+
+.tile-puzzle-rush .flame-chunk {
+  position: absolute;
+  width: 8px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f25c1f;
+  opacity: 0; }
+
+.tile-puzzle-rush:hover .flame-one {
+  animation: flameOne .4s ease-out infinite;
+  animation-delay: 0s; }
+
+.tile-puzzle-rush:hover .flame-two {
+  animation: flameTwo .45s ease-out infinite;
+  animation-delay: .1s; }
+
+.tile-puzzle-rush:hover .flame-three {
+  animation: flameThree .4s ease-out infinite;
+  animation-delay: .2s; }
+
+.tile-puzzle-rush .flame-one {
+  top: 33px;
+  left: 14px; }
+
+.tile-puzzle-rush .flame-two {
+  top: 46px;
+  left: 32px; }
+
+.tile-puzzle-rush .flame-three {
+  top: 63px;
+  left: 43px; }
+
+@keyframes flameOne {
+  0% {
+    transform: translateX(0px) translateY(0px) rotate(45deg);
+    opacity: 1; }
+  100% {
+    transform: translateX(-30px) translateY(40px) scale(0.75) rotate(45deg);
+    opacity: 0; } }
+
+@keyframes flameTwo {
+  0% {
+    transform: translateX(0px) translateY(0px) rotate(45deg);
+    opacity: 1; }
+  100% {
+    transform: translateX(-45px) translateY(45px) scale(0.75) rotate(45deg);
+    opacity: 0; } }
+
+@keyframes flameThree {
+  0% {
+    transform: translateX(0px) translateY(0px) rotate(45deg);
+    opacity: 1; }
+  100% {
+    transform: translateX(-30px) translateY(20px) scale(0.75) rotate(45deg);
+    opacity: 0; } }
+
+.tile-puzzle-rush:hover .puzzle {
+  animation: puzzleOne .15s ease-in-out infinite;
+  transform: translateX(5px) translateY(-5px); }
+
+.tile-puzzle-rush:hover .puzzle-flipped {
+  animation: puzzleTwo .15s ease-in-out infinite;
+  transform: translateX(5px) translateY(-5px); }
+
+@keyframes puzzleOne {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes puzzleTwo {
+  0% {
+    opacity: 0; }
+  40% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 1; } }
