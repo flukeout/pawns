@@ -180,9 +180,21 @@ body {
   }
 
   &:hover .checkmark {
-    transition: opacity $duration ease-out;
-    opacity: 1;
-    transition-delay: calc(#{$duration} * 2);
+    animation: checkPop $duration cubic-bezier(.18,1.16,.77,1.5);
+    opacity: 0;
+    animation-delay: calc(#{$duration} * 2);
+    animation-fill-mode: forwards;
+
+    @keyframes checkPop {
+      0% {
+        transform: scale(.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   }
 }
 

@@ -135,9 +135,18 @@ body {
   transform: scale(1.7) translateX(45px) translateY(45px); }
 
 .tile-analysis:hover .checkmark {
-  transition: opacity 0.2s ease-out;
-  opacity: 1;
-  transition-delay: calc(0.2s * 2); }
+  animation: checkPop 0.2s cubic-bezier(0.18, 1.16, 0.77, 1.5);
+  opacity: 0;
+  animation-delay: calc(0.2s * 2);
+  animation-fill-mode: forwards; }
+
+@keyframes checkPop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
 
 .tile-arena .image-wrapper {
   width: 80px;
