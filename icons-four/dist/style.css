@@ -226,11 +226,11 @@ body {
   left: 14px; }
 
 .tile-puzzle-rush .flame-two {
-  top: 46px;
-  left: 32px; }
+  top: 45px;
+  left: 30px; }
 
 .tile-puzzle-rush .flame-three {
-  top: 63px;
+  top: 60px;
   left: 43px; }
 
 @keyframes flameOne {
@@ -259,11 +259,11 @@ body {
 
 .tile-puzzle-rush:hover .puzzle {
   animation: puzzleOne .15s ease-in-out infinite;
-  transform: translateX(5px) translateY(-5px); }
+  transform: translateX(4px) translateY(-4px); }
 
 .tile-puzzle-rush:hover .puzzle-flipped {
   animation: puzzleTwo .15s ease-in-out infinite;
-  transform: translateX(5px) translateY(-5px); }
+  transform: translateX(4px) translateY(-4px); }
 
 @keyframes puzzleOne {
   0% {

@@ -116,7 +116,6 @@ body {
       transform: scale(1.1);
     }
   }
-
 }
 
 .tile-analysis {
@@ -175,11 +174,11 @@ body {
       opacity: 0;
     }
   }
-  
+
   &:hover .board {
     transform: scale(1.7) translateX(45px) translateY(45px);
   }
-  
+
   &:hover .checkmark {
     transition: opacity $duration ease-out;
     opacity: 1;
@@ -201,7 +200,6 @@ body {
   
   &:hover .helmet {
     transform: translateY(5px);
-
   }
 
   .sword-left {
@@ -213,7 +211,7 @@ body {
   
   &:hover .sword-left {
     transition-timing-function: ease-in-out;
-    transform:  translateY(10px) translateX(10px) scale(.9) rotate(-65deg);
+    transform: translateY(10px) translateX(10px) scale(.9) rotate(-65deg);
   }
 
   .sword-right {
@@ -243,7 +241,7 @@ body {
   &:hover .puzzle-wrapper {
     animation: speedShake $duration linear infinite;
   }
-  
+
   @keyframes speedShake {
     0% {
       transform: translateX(0) translateY(0);
@@ -257,9 +255,7 @@ body {
     75% {
       transform: translateX(1px) translateY(-1px);
     }
-
   }
-
 
   .puzzle {
     background-position: 0 -240px;
@@ -302,12 +298,12 @@ body {
   }
 
   .flame-two {
-    top: 46px;
-    left: 32px;
+    top: 45px;
+    left: 30px;
   }
 
   .flame-three {
-    top: 63px;
+    top: 60px;
     left: 43px;
   }
 
@@ -344,16 +340,15 @@ body {
     }
   }
 
-
   &:hover {
     .puzzle {
       animation: puzzleOne .15s ease-in-out infinite;
-      transform: translateX(5px) translateY(-5px);
+      transform: translateX(4px) translateY(-4px);
     }
 
     .puzzle-flipped {
       animation: puzzleTwo .15s ease-in-out infinite;
-      transform: translateX(5px) translateY(-5px);
+      transform: translateX(4px) translateY(-4px);
     }
   }
   
@@ -387,5 +382,3 @@ body {
     }
   }
 }
-
-// calc(#{$duration} * 4);
