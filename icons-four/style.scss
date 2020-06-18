@@ -546,7 +546,7 @@ body {
       animation-timing-function: ease-out;
     }
     25% {
-      transform: translateX(3px) translateY(-3px);
+      transform: translateX(2px) translateY(-2px);
 
       animation-timing-function: ease-in;
     }
@@ -555,7 +555,7 @@ body {
       animation-timing-function: ease-out;
     }
     75% {
-      transform: translateX(-3px) translateY(3px);
+      transform: translateX(-2px) translateY(2px);
       animation-timing-function: ease-in;
     }
     100% {
