@@ -320,7 +320,7 @@ body {
   &:hover .eyes {
     transform: translateY(5px) scale(1.1);
     transition: transform $duration ease-out, opacity $duration ease-out;;
-    transition-delay: 0s, .2s;
+    transition-delay: 0s, .1s;
     opacity: 1;
   }
 
@@ -331,44 +331,27 @@ body {
   .sword-left {
     background-position: -80px -160px;
     transform-origin: bottom left;
-    transition: transform $duration ease-in-out;
-    transition-timing-function: cubic-bezier(.61,.44,.44,1.45);
+    transition: transform $duration ease-out;
+
   }
-  
-  @keyframes swordLeft {
-    0% {
-      transform: translateY(15px) translateX(10px) scale(.9) rotate(-60deg);
-      animation-timing-function: ease-out;
-    }
-    30% {
-      transform: translateY(15px) translateX(10px) scale(.9) rotate(-65deg);
-      animation-timing-function: ease-in-out;
-    }
-    100% {
-      transform: translateY(15px) translateX(10px) scale(.9) rotate(-60deg);
-    }
-  }
-  
+
   &:hover .sword-left {
-    transition-timing-function: ease-in-out;
+    transition-timing-function: cubic-bezier(.28,1.65,.65,1);
+    transition-duration: .3s;
     transform: translateY(15px) translateX(10px) scale(.9) rotate(-60deg);
-    animation: swordLeft .3s ease-in-out;
-    animation-delay: .2s;
   }
 
   .sword-right {
     background-position: -160px -160px;
     transform-origin: bottom right;
-    transition: transform $duration ease-in-out;
-    transition-timing-function: cubic-bezier(.61,.44,.44,1.45);
+    transition: transform $duration ease-out;
+
   }
 
   &:hover .sword-right {
-    transition-timing-function: ease-in-out;
+    transition-timing-function: cubic-bezier(.28,1.65,.65,1);
+    transition-duration: .3s;
     transform: translateY(15px) translateX(-10px) scale(.9) rotate(60deg);
-    animation: swordRight .3s ease-in-out;
-    animation-delay: .2s;
-
   }
   
   @keyframes swordRight {
@@ -399,21 +382,18 @@ body {
   }
 
   &:hover .puzzle-wrapper {
-    animation: speedShake $duration linear infinite;
+    animation: speedShake2 $duration linear infinite;
   }
 
-  @keyframes speedShake {
+  @keyframes speedShake2 {
     0% {
       transform: translateX(0) translateY(0);
     }
-    25% {
-      transform: translateX(-1px) translateY(1px);
-    }
     50% {
-      transform: translateX(0) translateY(0);
-    }
-    75% {
       transform: translateX(1px) translateY(-1px);
+    }
+    100% {
+     transform: translateX(0) translateY(0);
     }
   }
 
@@ -556,22 +536,30 @@ body {
   }
 
   &:hover .puzzle-wrapper {
-    animation: speedShake .4s linear infinite;
+    animation: speedShake 1s linear infinite;
+    animation-delay: .2s;
   }
 
   @keyframes speedShake {
     0% {
       transform: translateX(0) translateY(0);
+      animation-timing-function: ease-out;
     }
     25% {
-      transform: translateX(-1px) translateY(1px);
+      transform: translateX(3px) translateY(-3px);
+
+      animation-timing-function: ease-in;
     }
     50% {
       transform: translateX(0) translateY(0);
+      animation-timing-function: ease-out;
     }
     75% {
-      transform: translateX(1px) translateY(-1px);
-
+      transform: translateX(-3px) translateY(3px);
+      animation-timing-function: ease-in;
+    }
+    100% {
+      transform: translateX(0) translateY(0);
     }
   }
 
