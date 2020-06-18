@@ -87,6 +87,48 @@ body {
   100% {
     transform: scale(1.1); } }
 
+.tile-chess-today-two .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px; }
+
+.tile-chess-today-two .pawn {
+  background-position: 0px 0;
+  transition: transform 0.2s ease-out; }
+
+.tile-chess-today-two .inner-ring {
+  background-position: -80px 0;
+  transition: transform 0.2s ease-out; }
+
+.tile-chess-today-two:hover .inner-ring {
+  animation: ringPopInner .3s linear, ringPopInner .3s linear;
+  animation-delay: 0s, .3s;
+  animation-fill-mode: forwards; }
+
+.tile-chess-today-two .outer-ring {
+  background-position: -160px 0;
+  transition: transform .2s ease-out; }
+
+.tile-chess-today-two:hover .outer-ring {
+  animation: ringPopOuter .3s linear, ringPopOuter .3s linear;
+  animation-delay: .025s, .325s; }
+
+@keyframes ringPopInner {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.1); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes ringPopOuter {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.15); }
+  100% {
+    transform: scale(1); } }
+
 .tile-analysis .image-wrapper {
   width: 80px;
   height: 80px;
@@ -179,6 +221,73 @@ body {
 .tile-arena:hover .sword-right {
   transition-timing-function: ease-in-out;
   transform: translateY(10px) translateX(-10px) scale(0.9) rotate(65deg); }
+
+.tile-arena-two .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px; }
+
+.tile-arena-two .helmet {
+  background-position: 0 -160px;
+  transition: transform 0.2s ease-out; }
+
+.tile-arena-two .eyes {
+  background-position: -240 -160px;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  opacity: 0; }
+
+.tile-arena-two:hover .eyes {
+  transform: translateY(5px) scale(1.1);
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  transition-delay: 0s, .2s;
+  opacity: 1; }
+
+.tile-arena-two:hover .helmet {
+  transform: translateY(5px) scale(1.1); }
+
+.tile-arena-two .sword-left {
+  background-position: -80px -160px;
+  transform-origin: bottom left;
+  transition: transform 0.2s ease-in-out;
+  transition-timing-function: cubic-bezier(0.61, 0.44, 0.44, 1.45); }
+
+@keyframes swordLeft {
+  0% {
+    transform: translateY(15px) translateX(10px) scale(0.9) rotate(-60deg);
+    animation-timing-function: ease-out; }
+  30% {
+    transform: translateY(15px) translateX(10px) scale(0.9) rotate(-65deg);
+    animation-timing-function: ease-in-out; }
+  100% {
+    transform: translateY(15px) translateX(10px) scale(0.9) rotate(-60deg); } }
+
+.tile-arena-two:hover .sword-left {
+  transition-timing-function: ease-in-out;
+  transform: translateY(15px) translateX(10px) scale(0.9) rotate(-60deg);
+  animation: swordLeft .3s ease-in-out;
+  animation-delay: .2s; }
+
+.tile-arena-two .sword-right {
+  background-position: -160px -160px;
+  transform-origin: bottom right;
+  transition: transform 0.2s ease-in-out;
+  transition-timing-function: cubic-bezier(0.61, 0.44, 0.44, 1.45); }
+
+.tile-arena-two:hover .sword-right {
+  transition-timing-function: ease-in-out;
+  transform: translateY(15px) translateX(-10px) scale(0.9) rotate(60deg);
+  animation: swordRight .3s ease-in-out;
+  animation-delay: .2s; }
+
+@keyframes swordRight {
+  0% {
+    transform: translateY(15px) translateX(-10px) scale(0.9) rotate(60deg);
+    animation-timing-function: ease-out; }
+  30% {
+    transform: translateY(15px) translateX(-10px) scale(0.9) rotate(65deg);
+    animation-timing-function: ease-in-out; }
+  100% {
+    transform: translateY(15px) translateX(-10px) scale(0.9) rotate(60deg); } }
 
 .tile-puzzle-rush .image-wrapper {
   width: 80px;
@@ -273,6 +382,64 @@ body {
 .tile-puzzle-rush:hover .puzzle-flipped {
   animation: puzzleTwo .15s ease-in-out infinite;
   transform: translateX(4px) translateY(-4px); }
+
+@keyframes puzzleOne {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes puzzleTwo {
+  0% {
+    opacity: 0; }
+  40% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 1; } }
+
+.tile-puzzle-rush-two .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px; }
+
+.tile-puzzle-rush-two .puzzle-wrapper.sprite {
+  background-image: none; }
+
+.tile-puzzle-rush-two:hover .puzzle-wrapper {
+  animation: speedShake .4s linear infinite; }
+
+@keyframes speedShake {
+  0% {
+    transform: translateX(0) translateY(0); }
+  25% {
+    transform: translateX(-1px) translateY(1px); }
+  50% {
+    transform: translateX(0) translateY(0); }
+  75% {
+    transform: translateX(1px) translateY(-1px); } }
+
+.tile-puzzle-rush-two .puzzle {
+  background-position: 0 -240px;
+  transition: transform 0.2s ease-in-out; }
+
+.tile-puzzle-rush-two .puzzle-flipped {
+  background-position: -80px -240px;
+  opacity: 0;
+  transition: transform 0.2s ease-in-out; }
+
+.tile-puzzle-rush-two:hover .puzzle {
+  animation: puzzleOne .15s ease-in-out infinite;
+  transform: translateX(3px) translateY(-3px); }
+
+.tile-puzzle-rush-two:hover .puzzle-flipped {
+  animation: puzzleTwo .15s ease-in-out infinite;
+  transform: translateX(3px) translateY(-3px); }
 
 @keyframes puzzleOne {
   0% {
