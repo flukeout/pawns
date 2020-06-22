@@ -1,0 +1,390 @@
+$duration: 0.2s;
+$spritesheet-image: "../img/spritesheet@3x.png";
+
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  flex-wrap: wrap;
+}
+
+.tile {
+  background: #22201d;
+  width: 168px;
+  height: 168px;
+  border-radius: 10px;
+  margin: 20px;
+  border-bottom: solid 4px #171513;
+  transition: background 0.15s ease-out;
+  position: relative;
+
+  label {
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    color: #c3c3c2;
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+  }
+
+  .image-wrapper {
+    margin: 30px auto 0 auto;
+    position: relative;
+
+    .sprite {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url($spritesheet-image);
+      background-size: 240px;
+      background-repeat: no-repeat;
+
+      &.no-bg {
+        background-image: none;
+      }
+    }
+  }
+
+  &:hover {
+    background: #393633;
+    border-bottom: solid 4px #22201d;
+    cursor: pointer;
+  }
+}
+
+.tile-chess-today {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+  }
+
+  .pawn {
+    background-position: 0 0;
+    transition: transform $duration ease-out;
+  }
+
+  .inner-ring {
+    background-position: -80px 0;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .inner-ring {
+    animation: ringPopInner 0.3s linear, ringPopInner 0.3s linear;
+    animation-delay: 0s, 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  .outer-ring {
+    background-position: -160px 0;
+    transition: transform 0.2s ease-out;
+  }
+
+  &:hover .outer-ring {
+    animation: ringPopOuter 0.3s linear, ringPopOuter 0.3s linear;
+    animation-delay: 0.025s, 0.325s;
+  }
+
+  @keyframes ringPopInner {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes ringPopOuter {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.15);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+.tile-analysis {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+  }
+
+  .magnifier {
+    background-position: 0 -80px;
+    transition: transform $duration ease-out;
+    transform-origin: 44% 44%;
+  }
+
+  &:hover .magnifier {
+    transform: rotate(12deg) scale(1.05);
+  }
+
+  .board-viewer {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    border-radius: 50%;
+
+    .board {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      background-position: -80px -80px;
+      top: -25px;
+      left: -25px;
+      transition: transform calc(#{$duration} * 2) ease-in-out;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      background-image: url($spritesheet-image);
+      background-size: 240px;
+      background-repeat: no-repeat;
+      background-position: -160px -80px;
+      opacity: 0;
+    }
+  }
+
+  &:hover .board {
+    transform: scale(2) translateX(33px) translateY(33px);
+  }
+
+  &:hover .checkmark {
+    animation: checkPop $duration cubic-bezier(0.18, 1.16, 0.77, 1.5);
+    opacity: 0;
+    animation-delay: calc(#{$duration} * 2);
+    animation-fill-mode: forwards;
+
+    @keyframes checkPop {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.tile-arena {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+  }
+
+  .helmet {
+    background-position: 0 -160px;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .helmet {
+    transform: translateY(2px) scale(1.1);
+  }
+
+  .sword-left {
+    background-position: -80px -160px;
+    transform-origin: bottom left;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .sword-left {
+    transition-timing-function: cubic-bezier(0.28, 1.65, 0.65, 1);
+    transition-duration: 0.3s;
+    transform: translateY(15px) translateX(10px) scale(0.9) rotate(-60deg);
+  }
+
+  .sword-right {
+    background-position: -160px -160px;
+    transform-origin: bottom right;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .sword-right {
+    transition-timing-function: cubic-bezier(0.28, 1.65, 0.65, 1);
+    transition-duration: 0.3s;
+    transform: translateY(15px) translateX(-10px) scale(0.9) rotate(60deg);
+  }
+}
+
+.tile-puzzle-rush {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+  }
+
+  .puzzle-wrapper.sprite {
+    background-image: none;
+  }
+
+  &:hover .puzzle-wrapper {
+    animation: speedShake 0.75s linear infinite;
+  }
+
+  @keyframes speedShake {
+    0% {
+      transform: translateX(0) translateY(0);
+      animation-timing-function: ease-out;
+    }
+
+    25% {
+      transform: translateX(2px) translateY(-2px);
+      animation-timing-function: ease-in;
+    }
+
+    50% {
+      transform: translateX(0) translateY(0);
+      animation-timing-function: ease-out;
+    }
+
+    75% {
+      transform: translateX(-2px) translateY(2px);
+      animation-timing-function: ease-in;
+    }
+
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+  }
+
+  .puzzle {
+    background-position: 0 -240px;
+    transition: transform $duration ease-in-out;
+  }
+
+  .puzzle-flipped {
+    background-position: -80px -240px;
+    opacity: 0;
+    transition: transform $duration ease-in-out;
+  }
+
+  &:hover .puzzle {
+    animation: puzzleOne 0.15s ease-in-out infinite;
+    transform: translateX(4px) translateY(-4px);
+  }
+
+  &:hover .puzzle-flipped {
+    animation: puzzleTwo 0.15s ease-in-out infinite;
+    transform: translateX(4px) translateY(-4px);
+  }
+
+  @keyframes puzzleOne {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    60% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes puzzleTwo {
+    0% { opacity: 0; }
+    40% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
+  .flame-chunk {
+    position: absolute;
+    width: 8px;
+    height: 10px;
+    border-radius: 50%;
+    background: #f25c1f;
+    opacity: 0;
+  }
+
+  .flame-one {
+    top: 33px;
+    left: 14px;
+  }
+
+  .flame-two {
+    top: 45px;
+    left: 30px;
+  }
+
+  .flame-three {
+    top: 60px;
+    left: 43px;
+  }
+
+  &:hover {
+    .flame-one {
+      animation: flameOne 0.4s ease-out infinite;
+      animation-delay: 0s;
+    }
+
+    .flame-two {
+      animation: flameTwo 0.45s ease-out infinite;
+      animation-delay: 0.1s;
+    }
+
+    .flame-three {
+      animation: flameThree 0.4s ease-out infinite;
+      animation-delay: 0.2s;
+    }
+  }
+
+  @keyframes flameOne {
+    0% {
+      transform: translateX(0) translateY(0) rotate(45deg);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(-30px) translateY(40px) scale(0.75) rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes flameTwo {
+    0% {
+      transform: translateX(0) translateY(0) rotate(45deg);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(-45px) translateY(45px) scale(0.75) rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes flameThree {
+    0% {
+      transform: translateX(0) translateY(0) rotate(45deg);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(-30px) translateY(20px) scale(0.75) rotate(45deg);
+      opacity: 0;
+    }
+  }
+}
