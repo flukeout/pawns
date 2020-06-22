@@ -130,9 +130,8 @@ body {
   transform: scale(2) translateX(33px) translateY(33px); }
 
 .tile-analysis:hover .checkmark {
-  animation: checkPop 0.2s cubic-bezier(0.18, 1.16, 0.77, 1.5);
-  animation: checkPop 0.2s ease-out;
   opacity: 0;
+  animation: checkPop 0.2s ease-out;
   animation-delay: calc(0.2s * 2);
   animation-fill-mode: forwards; }
 
@@ -188,7 +187,7 @@ body {
   background-image: none; }
 
 .tile-puzzle-rush:hover .puzzle-wrapper {
-  animation: speedShake 0.75s linear infinite; }
+  animation: speedShake 0.75s infinite; }
 
 @keyframes speedShake {
   0% {
@@ -216,14 +215,14 @@ body {
   transition: transform 0.2s ease-in-out; }
 
 .tile-puzzle-rush:hover .puzzle {
-  animation: puzzleOne 0.15s ease-in-out infinite;
+  animation: puzzleOpacity 0.15s ease-in-out infinite;
   transform: translateX(4px) translateY(-4px); }
 
 .tile-puzzle-rush:hover .puzzle-flipped {
-  animation: puzzleTwo 0.15s ease-in-out infinite;
+  animation: puzzleFlippedOpacity 0.15s ease-in-out infinite;
   transform: translateX(4px) translateY(-4px); }
 
-@keyframes puzzleOne {
+@keyframes puzzleOpacity {
   0% {
     opacity: 1; }
   50% {
@@ -233,7 +232,7 @@ body {
   100% {
     opacity: 0; } }
 
-@keyframes puzzleTwo {
+@keyframes puzzleFlippedOpacity {
   0% {
     opacity: 0; }
   40% {

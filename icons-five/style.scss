@@ -175,9 +175,8 @@ body {
   }
 
   &:hover .checkmark {
-    animation: checkPop $duration cubic-bezier(0.18, 1.16, 0.77, 1.5);
-    animation: checkPop $duration ease-out;
     opacity: 0;
+    animation: checkPop $duration ease-out;
     animation-delay: calc(#{$duration} * 2);
     animation-fill-mode: forwards;
 
@@ -186,10 +185,12 @@ body {
         transform: scale(0.7);
         opacity: 0;
       }
+
       70% {
         transform: scale(1.1);
         opacity: 1;
       }
+
       100% {
         transform: scale(1);
         opacity: 1;
@@ -251,7 +252,7 @@ body {
   }
 
   &:hover .puzzle-wrapper {
-    animation: speedShake 0.75s linear infinite;
+    animation: speedShake 0.75s infinite;
   }
 
   @keyframes speedShake {
@@ -292,27 +293,49 @@ body {
   }
 
   &:hover .puzzle {
-    animation: puzzleOne 0.15s ease-in-out infinite;
+    animation: puzzleOpacity 0.15s ease-in-out infinite;
     transform: translateX(4px) translateY(-4px);
   }
 
   &:hover .puzzle-flipped {
-    animation: puzzleTwo 0.15s ease-in-out infinite;
+    animation: puzzleFlippedOpacity 0.15s ease-in-out infinite;
     transform: translateX(4px) translateY(-4px);
   }
 
-  @keyframes puzzleOne {
-    0% { opacity: 1; }
-    50% { opacity: 1; }
-    60% { opacity: 0; }
-    100% { opacity: 0; }
+  @keyframes puzzleOpacity {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    60% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0;
+    }
   }
 
-  @keyframes puzzleTwo {
-    0% { opacity: 0; }
-    40% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 1; }
+  @keyframes puzzleFlippedOpacity {
+    0% {
+      opacity: 0;
+    }
+
+    40% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 
   .flame-chunk {
