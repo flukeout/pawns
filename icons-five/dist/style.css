@@ -33,7 +33,7 @@ body {
       position: absolute;
       top: 0;
       left: 0;
-      background-image: url("../img/spritesheet@3x.png");
+      background-image: url("../img/spritesheet@3x-min.png");
       background-size: 240px;
       background-repeat: no-repeat; }
       .tile .image-wrapper .sprite.no-bg {
@@ -120,7 +120,7 @@ body {
     left: 0;
     width: 30px;
     height: 30px;
-    background-image: url("../img/spritesheet@3x.png");
+    background-image: url("../img/spritesheet@3x-min.png");
     background-size: 240px;
     background-repeat: no-repeat;
     background-position: -160px -80px;
