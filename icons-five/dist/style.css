@@ -113,7 +113,7 @@ body {
     background-position: -80px -80px;
     top: -25px;
     left: -25px;
-    transition: transform calc(0.2s * 2) ease-in-out; }
+    transition: transform calc(0.2s * 1.5) ease-in-out; }
   .tile-analysis .board-viewer .checkmark {
     position: absolute;
     top: 0;
@@ -132,7 +132,7 @@ body {
 .tile-analysis:hover .checkmark {
   opacity: 0;
   animation: checkPop 0.2s ease-out;
-  animation-delay: calc(0.2s * 2);
+  animation-delay: calc(0.2s * 1.5);
   animation-fill-mode: forwards; }
 
 @keyframes checkPop {

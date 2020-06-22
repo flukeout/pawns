@@ -153,7 +153,7 @@ body {
       background-position: -80px -80px;
       top: -25px;
       left: -25px;
-      transition: transform calc(#{$duration} * 2) ease-in-out;
+      transition: transform calc(#{$duration} * 1.5) ease-in-out;
     }
 
     .checkmark {
@@ -177,7 +177,7 @@ body {
   &:hover .checkmark {
     opacity: 0;
     animation: checkPop $duration ease-out;
-    animation-delay: calc(#{$duration} * 2);
+    animation-delay: calc(#{$duration} * 1.5);
     animation-fill-mode: forwards;
 
     @keyframes checkPop {
