@@ -1,0 +1,407 @@
+$duration: 0.2s;
+$spritesheet-image: "../img/spritesheet@3x.png";
+
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  flex-wrap: wrap;
+}
+
+.tile {
+  background: #22201d;
+  width: 168px;
+  height: 168px;
+  border-radius: 10px;
+  margin: 20px;
+  border-bottom: solid 4px #171513;
+  transition: background 0.15s ease-out;
+  position: relative;
+
+  label {
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    color: #c3c3c2;
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+  }
+
+  .image-wrapper {
+    margin: 30px auto 0 auto;
+    position: relative;
+
+    .sprite {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url($spritesheet-image);
+      background-size: 323px;
+      background-repeat: no-repeat;
+
+      &.no-bg {
+        background-image: none;
+      }
+    }
+  }
+
+  &:hover {
+    background: #393633;
+    border-bottom: solid 4px #22201d;
+    cursor: pointer;
+  }
+}
+
+
+.tile-puzzle-battle {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+  }
+
+  .helmet {
+    background-position: 0 0px;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .helmet {
+    transform: translateY(2px) scale(1.1);
+  }
+
+  .sword-left {
+    background-position: -81px 0px;
+    transform-origin: bottom left;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .sword-left {
+    transition-timing-function: cubic-bezier(0.28, 1.65, 0.65, 1);
+    transition-duration: 0.3s;
+    transform: translateY(15px) translateX(10px) scale(0.9) rotate(-60deg);
+  }
+
+  .sword-right {
+    background-position: -162px 0;
+    transform-origin: bottom right;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .sword-right {
+    transition-timing-function: cubic-bezier(0.28, 1.65, 0.65, 1);
+    transition-duration: 0.3s;
+    transform: translateY(15px) translateX(-10px) scale(0.9) rotate(60deg);
+  }
+}
+
+
+.tile-chess-tv {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+  }
+
+  .pawn {
+    background-position: 0 -81px;
+    transition: transform $duration ease-out;
+  }
+
+  .tv {
+    background-position: -81px -81px;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .inner-ring {
+    animation: ringPopInner 0.3s linear, ringPopInner 0.3s linear;
+    animation-delay: 0s, 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  .outer-ring {
+    background-position: -160px 0;
+    transition: transform 0.2s ease-out;
+  }
+
+  &:hover .outer-ring {
+    animation: ringPopOuter 0.3s linear, ringPopOuter 0.3s linear;
+    animation-delay: 0.025s, 0.325s;
+  }
+
+  @keyframes ringPopInner {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes ringPopOuter {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.15);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+.tile-four-player {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+  }
+
+  .arrow-left {
+    background-position: -81px -162px;
+  }
+
+  .sprite {
+    transition: transform $duration ease-out;
+  }
+
+
+  &:hover .sprite {
+    transition: transform $duration cubic-bezier(.46,-1.23,.31,.84);
+  }
+
+  &:hover .arrow-left {
+    transform: translateX(8px);
+  }
+
+  .arrow-top {
+    background-position: 0 -162px;
+  }
+
+  &:hover .arrow-top {
+    transform: translateY(8px);
+  }
+
+  .arrow-right {
+    background-position: -162px -162px;
+  }
+  
+  &:hover .arrow-right {
+    transform: translateX(-8px);
+  }
+
+  .arrow-bottom {
+    background-position: -243px -162px;
+  }
+
+  &:hover .arrow-bottom {
+    transform: translateY(-8px);
+  }
+}
+
+
+.tile-four-player-two {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+  }
+
+  .arrow-left {
+    background-position: -81px -162px;
+  }
+
+  .sprite {
+    transition: transform $duration ease-out;
+  }
+
+
+  &:hover .sprite {
+    transition: transform $duration cubic-bezier(.46,-1.23,.31,.84);
+  }
+
+  &:hover .arrow-left {
+    animation: arrowLeft .5s ease-in-out;
+    animation-iteration-count: 2;
+    
+    @keyframes arrowLeft {
+      0%  { 
+        transform: translateX(0);
+        animation-timing-function: ease-out;
+      }
+      25%  {
+        transform: translateX(-4px); 
+        animation-timing-function: ease-in-out;
+        
+      }
+      75%  { 
+        transform: translateX(4px); 
+        animation-timing-function: ease-in;
+      }
+      100% { 
+        transform: translateX(0); 
+      }
+    }
+  }
+
+  .arrow-top {
+    background-position: 0 -162px;
+  }
+
+  &:hover .arrow-top {
+    animation: arrowTop .5s ease-in-out;
+    animation-iteration-count: 2;
+    
+    @keyframes arrowTop {
+      0%  { 
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+      }
+      25%  {
+        transform: translateY(-4px); 
+        animation-timing-function: ease-in-out;
+        
+      }
+      75%  { 
+        transform: translateY(4px); 
+        animation-timing-function: ease-in;
+      }
+      100% { 
+        transform: translateY(0); 
+      }
+    }
+  }
+
+  .arrow-right {
+    background-position: -162px -162px;
+  }
+  
+  &:hover .arrow-right {
+    animation: arrowRight .5s ease-in-out;
+    animation-iteration-count: 2;
+    
+    @keyframes arrowRight {
+      0%  { 
+        transform: translateX(0);
+        animation-timing-function: ease-out;
+      }
+      25%  {
+        transform: translateX(4px);
+        animation-timing-function: ease-in-out;
+        
+      }
+      75%  { 
+        transform: translateX(-4px);
+        animation-timing-function: ease-in;
+      }
+      100% { 
+        transform: translateX(0);
+      }
+    }
+  }
+
+  .arrow-bottom {
+    background-position: -243px -162px;
+  }
+
+  &:hover .arrow-bottom {
+    animation: arrowBottom .5s ease-in-out;
+    animation-iteration-count: 2;
+    
+    @keyframes arrowBottom {
+      0%  { 
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+      }
+      25%  {
+        transform: translateY(4px);
+        animation-timing-function: ease-in-out;
+        
+      }
+      75%  { 
+        transform: translateY(-4px);
+        animation-timing-function: ease-in;
+      }
+      100% { 
+        transform: translateY(0);
+      }
+    }
+
+  }
+}
+
+.tile-stats {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+  }
+
+  .bar {
+    position: absolute;
+    bottom: 4px;
+    width: 20px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-image: url($spritesheet-image);
+    background-size: 323px;
+    background-repeat: no-repeat;
+    transition: height $duration ease-out;
+  }
+
+  &:hover .bar {
+    transition-timing-function: cubic-bezier(.47,1.54,.66,1.01);
+  }
+
+  .bar-one {
+    border: solid 2px #0097c7;
+    height: 39px;
+    left: 4px;
+    background-color: #0097c7;
+    background-position: bottom left -4px;
+  }
+  
+  &:hover .bar-one {
+    height: 65px;
+  }
+
+  .bar-two {
+    border: solid 2px #6c9d41;
+    height: 55px;
+    background-color: #6c9d41;
+    left: 30px;
+    background-position: bottom left -30px;
+  }
+
+  &:hover .bar-two {
+    height: 40px;
+    transition-delay: .05s;
+  }
+
+  .bar-three {
+    border: solid 2px #ca3431;
+    background-color: #ca3431;
+    height: 71px;
+    left: 56px;
+    background-position: bottom left -56px;
+  }
+
+  &:hover .bar-three {
+    height: 55px;
+    transition-delay: .1s;
+  }
+
+}
