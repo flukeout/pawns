@@ -82,40 +82,40 @@ body {
 
 .tile-chess-tv .pawn {
   background-position: 0 -81px;
-  transition: transform 0.2s ease-out; }
+  transition: transform 0.2s ease-out;
+  transform-origin: bottom; }
+
+.tile-chess-tv:hover .pawn {
+  transform: translateY(8px) scale(0.95); }
 
 .tile-chess-tv .tv {
   background-position: -81px -81px;
   transition: transform 0.2s ease-out; }
 
-.tile-chess-tv:hover .inner-ring {
-  animation: ringPopInner 0.3s linear, ringPopInner 0.3s linear;
-  animation-delay: 0s, 0.3s;
-  animation-fill-mode: forwards; }
+.tile-chess-tv:hover .tv {
+  transform: translateY(-8px); }
 
-.tile-chess-tv .outer-ring {
-  background-position: -160px 0;
+.tile-chess-tv .play {
+  background-position: -162px -81px;
+  opacity: 0;
   transition: transform 0.2s ease-out; }
 
-.tile-chess-tv:hover .outer-ring {
-  animation: ringPopOuter 0.3s linear, ringPopOuter 0.3s linear;
-  animation-delay: 0.025s, 0.325s; }
+.tile-chess-tv:hover .play {
+  transform: translateY(-8px);
+  animation: playPop 0.2s ease-out;
+  animation-delay: .1s;
+  animation-fill-mode: forwards; }
 
-@keyframes ringPopInner {
+@keyframes playPop {
   0% {
-    transform: scale(1); }
-  50% {
-    transform: scale(1.1); }
+    transform: translateY(-8px) scale(0.8);
+    opacity: 0; }
+  60% {
+    transform: translateY(-8px) scale(1.1);
+    opacity: 1; }
   100% {
-    transform: scale(1); } }
-
-@keyframes ringPopOuter {
-  0% {
-    transform: scale(1); }
-  50% {
-    transform: scale(1.15); }
-  100% {
-    transform: scale(1); } }
+    transform: translateY(-8px) scale(1);
+    opacity: 1; } }
 
 .tile-four-player .image-wrapper {
   width: 80px;

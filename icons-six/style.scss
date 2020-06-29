@@ -111,6 +111,12 @@ body {
   .pawn {
     background-position: 0 -81px;
     transition: transform $duration ease-out;
+    transform-origin: bottom;
+    
+  }
+
+  &:hover .pawn {
+    transform: translateY(8px) scale(.95);
   }
 
   .tv {
@@ -118,49 +124,40 @@ body {
     transition: transform $duration ease-out;
   }
 
-  &:hover .inner-ring {
-    animation: ringPopInner 0.3s linear, ringPopInner 0.3s linear;
-    animation-delay: 0s, 0.3s;
+  &:hover .tv {
+    transform: translateY(-8px);
+  }
+
+  .play {
+    background-position: -162px -81px;
+    opacity: 0;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .play {
+    transform: translateY(-8px);
+    animation: playPop $duration ease-out;
+    animation-delay: .1s;
     animation-fill-mode: forwards;
-  }
 
-  .outer-ring {
-    background-position: -160px 0;
-    transition: transform 0.2s ease-out;
-  }
+    @keyframes playPop {
+      0% {
+        transform: translateY(-8px) scale(.8);
+        opacity: 0;
+      }
+      60% {
+        transform: translateY(-8px) scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-8px) scale(1);
+        opacity: 1;
+      }
 
-  &:hover .outer-ring {
-    animation: ringPopOuter 0.3s linear, ringPopOuter 0.3s linear;
-    animation-delay: 0.025s, 0.325s;
-  }
-
-  @keyframes ringPopInner {
-    0% {
-      transform: scale(1);
-    }
-
-    50% {
-      transform: scale(1.1);
-    }
-
-    100% {
-      transform: scale(1);
     }
   }
 
-  @keyframes ringPopOuter {
-    0% {
-      transform: scale(1);
-    }
 
-    50% {
-      transform: scale(1.15);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
 }
 
 .tile-four-player {
