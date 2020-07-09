@@ -1,0 +1,180 @@
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  flex-wrap: wrap; }
+
+.tile {
+  background: #22201d;
+  width: 168px;
+  height: 168px;
+  border-radius: 10px;
+  margin: 20px;
+  border-bottom: solid 4px #171513;
+  transition: background 0.15s ease-out;
+  position: relative; }
+  .tile label {
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    color: #c3c3c2;
+    position: absolute;
+    bottom: 10%;
+    width: 100%; }
+  .tile .image-wrapper {
+    margin: 30px auto 0 auto;
+    position: relative; }
+    .tile .image-wrapper .sprite {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("../img/spritesheet@3x.png");
+      background-size: 323px;
+      background-repeat: no-repeat; }
+      .tile .image-wrapper .sprite.no-bg {
+        background-image: none; }
+  .tile:hover {
+    background: #393633;
+    border-bottom: solid 4px #22201d;
+    cursor: pointer; }
+
+.tile-tournaments .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px; }
+
+.tile-tournaments .medal {
+  background-position: 0 0px;
+  transition: transform 0.2s ease-out;
+  transform-origin: 50% 37.5%; }
+
+.tile-tournaments:hover .medal {
+  animation: medalWave .6s linear; }
+
+@keyframes medalWave {
+  0% {
+    animation-timing-function: ease-out;
+    transform: rotate(0); }
+  25% {
+    animation-timing-function: ease-in-out;
+    transform: rotate(-20deg); }
+  75% {
+    animation-timing-function: ease-out;
+    transform: rotate(10deg); }
+  100% {
+    transform: rotate(0); } }
+
+.tile-tournaments .strap {
+  background-position: -81px 0px;
+  transform-origin: bottom left;
+  transition: transform 0.2s ease-out; }
+
+.tile-tournaments-two .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px;
+  transition: transform .2s ease-in-out; }
+
+.tile-tournaments-two:hover .image-wrapper {
+  transform: scale(1.05); }
+
+.tile-tournaments-two .medal {
+  background-position: 0 0px;
+  transition: transform 0.2s ease-out;
+  transform-origin: 50% 37.5%; }
+
+.tile-tournaments-two .medal-circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 15px;
+  top: 28px;
+  overflow: hidden;
+  border-radius: 50%;
+  transform: rotate(30deg);
+  box-sizing: border-box; }
+
+.tile-tournaments-two:hover .medal-circle {
+  animation: edgeGleam .6s linear;
+  animation-fill-mode: forwards; }
+
+@keyframes edgeGleam {
+  0% {
+    border-left: solid 0px white;
+    border-right: solid 0px white;
+    animation-timing-function: ease-out; }
+  40% {
+    border-left: solid 6px white;
+    border-right: solid 0px white; }
+  41% {
+    border-left: solid 0px white;
+    border-right: solid 0px white; }
+  60% {
+    border-left: solid 0px white;
+    border-right: solid 0px white; }
+  61% {
+    animation-timing-function: ease-out;
+    border-left: solid 0px white;
+    border-right: solid 6px white; }
+  100% {
+    border-left: solid 0px white;
+    border-right: solid 0px white; } }
+
+.tile-tournaments-two .inner-circle {
+  position: absolute;
+  background: white;
+  opacity: .5;
+  width: 0px;
+  height: 100%;
+  left: 0px;
+  top: 0;
+  transition: all 0.2s cubic-bezier(1, 0, 0, 1); }
+
+.tile-tournaments-two:hover .inner-circle {
+  background: white;
+  opacity: .5;
+  animation: medalGleam .6s linear;
+  animation-fill-mode: forwards; }
+
+@keyframes medalGleam {
+  0% {
+    left: 0;
+    width: 0px;
+    animation-timing-function: ease-in; }
+  40% {
+    left: 0;
+    width: 10px;
+    opacity: .5; }
+  45% {
+    left: 0;
+    width: 100%;
+    opacity: 1; }
+  50% {
+    left: auto;
+    right: 0;
+    width: 100%; }
+  55% {
+    left: auto;
+    right: 0;
+    width: 100%;
+    opacity: 1; }
+  60% {
+    left: auto;
+    right: 0;
+    opacity: .5;
+    width: 10px;
+    animation-timing-function: ease-out; }
+  100% {
+    left: auto;
+    right: 0;
+    width: 0px; } }
+
+.tile-tournaments-two .strap {
+  background-position: -81px 0px;
+  transform-origin: bottom left;
+  transition: transform 0.2s ease-out; }
