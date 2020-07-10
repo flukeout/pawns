@@ -58,60 +58,6 @@ body {
   }
 }
 
-
-.tile-tournaments {
-  .image-wrapper {
-    width: 80px;
-    height: 80px;
-    margin-top: 25px;
-  }
-
-  .medal {
-    background-position: 0 0px;
-    transition: transform $duration ease-out;
-    transform-origin: 50% 37.5%;
-  }
-
-  &:hover .medal {
-    // transform: rotate(-15deg);
-    animation: medalWave .6s linear;
-    
-    @keyframes medalWave {
-      0% {
-        animation-timing-function: ease-out;
-        transform: rotate(0);
-      }
-      25% {
-        animation-timing-function: ease-in-out;
-        transform: rotate(-20deg);
-      }
-      75% {
-        animation-timing-function: ease-out;
-        transform: rotate(10deg);
-      }
-      100% {
-        transform: rotate(0);
-      }
-
-    }
-    // transform: translateY(2px) scale(1.1);
-  }
-
-  .strap {
-    background-position: -81px 0px;
-    transform-origin: bottom left;
-    transition: transform $duration ease-out;
-    
-  }
-
-  &:hover .strap {
-    // transition-timing-function: cubic-bezier(0.28, 1.65, 0.65, 1);
-    // transition-duration: 0.3s;
-    // transform: translateY(15px) translateX(10px) scale(0.9) rotate(-60deg);
-      
-  }
-}
-
 .tile-tournaments-two {
   .image-wrapper {
     width: 80px;
@@ -134,21 +80,20 @@ body {
 
   .medal-circle {
     position: absolute;
-    // background: #fcd157;
     width: 50px;
     height: 50px;
     left: 15px;
     top: 28px;
-    // border-radius: 50%;
     overflow: hidden;
     border-radius: 50%;
     transform: rotate(30deg);
     box-sizing: border-box;
   }
-  
+
+  $gleamDuration : .5s;
+
   &:hover .medal-circle {
-    animation: edgeGleam .6s linear;
-    animation-fill-mode: forwards;
+    animation: edgeGleam $gleamDuration linear;
 
     @keyframes edgeGleam {
       0% {
@@ -176,87 +121,290 @@ body {
 
       }
       100% {
-
         border-left: solid 0px white;
         border-right: solid 0px white;
-
       }
     }
 
   }
 
   .inner-circle {
-    position: absolute;
     background: white;
-    opacity: .5;
-    width: 0px;
+    position: absolute;
+    width: 100%;
     height: 100%;
-    left: 0px;
-    top: 0;
-    transition: all .2s cubic-bezier(1,0, 0, 1);
+    opacity: 0;
   }
 
   &:hover .inner-circle {
-    background: white;
-    opacity: .5;
-    animation: medalGleam .6s linear;
+    animation: medalGleam $gleamDuration linear;
     animation-fill-mode: forwards;
 
     @keyframes medalGleam {
-      0% {
-        left: 0;
-        width: 0px;
-        animation-timing-function: ease-in;
-      }
-      40% {
-        left: 0;
-        width: 10px;
-        opacity: .5;
+      30% {
+        opacity: 0;
       }
       45% {
-        left: 0;
-        width: 100%;
         opacity: 1;
-      }
-      50% {
-        left: auto;
-        right: 0;
-        width: 100%;
-        
       }
       55% {
-        left: auto;
-        right: 0;
-        width: 100%;
         opacity: 1;
       }
-      60% {
-        left: auto;
-        right: 0;
-        opacity: .5;
-        width: 10px;
-        animation-timing-function: ease-out;
-      }
-      100% {
-        left: auto;
-        right: 0;
-        width: 0px;
+      70% {
+        opacity: 0;
       }
     }
   }
 
   .strap {
     background-position: -81px 0px;
-    transform-origin: bottom left;
+    transform-origin: top;
     transition: transform $duration ease-out;
-    
   }
 
   &:hover .strap {
-    // transition-timing-function: cubic-bezier(0.28, 1.65, 0.65, 1);
-    // transition-duration: 0.3s;
-    // transform: translateY(15px) translateX(10px) scale(0.9) rotate(-60deg);
-      
+    
   }
 }
+
+.tile-tournaments-three {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+    transition: transform .2s ease-in-out;
+  }
+
+  .medal-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: all $duration ease-out;
+  }
+  
+  .medal-shadow {
+    position: absolute;
+    height: 58px;
+    width: 62px;
+    left: 9px;
+    top: 26px;
+    border-radius: 50%;
+    opacity: .15;
+    background: black;
+  }
+
+  .medal-left, .medal-right {
+    transform: scale(.85) translateY(7px);
+    opacity: 0;
+    transition: transform .4s cubic-bezier(.52,1.67,.72,.98), opacity .1s ease-out;
+    
+  }
+
+  &:hover .medal-left {
+    transition-delay: 0, .1s;
+    transform: rotate(15deg) translateX(-20px) scale(.85) translateY(7px);
+    opacity: .8;
+  }
+
+  &:hover .medal-right {
+    transition-delay: 0, .1s;
+    transform: rotate(-15deg) translateX(20px) scale(.85) translateY(7px);
+    opacity: .8;
+  }
+
+
+  &:hover {
+    .medal-main {
+      transform: scale(1.05);
+    }
+  }
+
+  .medal {
+    background-position: 0 0px;
+    transition: transform $duration ease-out;
+    transform-origin: 50% 37.5%;
+  }
+
+ 
+  .strap {
+    background-position: -81px 0px;
+    transform-origin: top;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .strap {
+    
+  }
+}
+
+.tile-forums {
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+    transition: transform .2s ease-in-out;
+  }
+
+  .bubble-one {
+    background-position: 0px -81px;
+    transition: transform $duration ease-out;
+  }
+  
+  &:hover .bubble-one {
+    animation: forumBubblePop .4s ease-in-out;
+  }
+  
+  &:hover .bubble-two {
+    animation: forumBubblePop .4s ease-in-out;
+    animation-delay: .2s;
+  }
+
+  @keyframes forumBubblePop {
+    0% {
+      transform: scale(.9);
+    }
+    40% {
+      transform: scale(1.08);
+    }
+    70% {
+      transform: scale(.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .bubble-two {
+    background-position: -81px -81px;
+    transition: transform $duration ease-out;
+  }
+}
+
+.tile-vote-chess {
+
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+    transition: transform .2s ease-in-out;
+  }
+
+  .clipboard {
+    background-position: 0px -162px;
+    transition: transform $duration ease-out;
+  }
+  
+  &:hover .clipboard {
+    animation-delay: .2s;
+    transform: scale(.96) translateX(-5%) translateY(-5%);
+  }
+
+  .checkmark {
+    background-position: -81px -162px;
+    transition: transform $duration ease-out, opacity $duration ease-out;
+  }
+  
+  &:hover .checkmark {
+    opacity: 0;
+    transform: scale(.96) translateX(-5%) translateY(-5%);
+  }
+
+  .question-mark {
+    background-position: -162px -162px;
+    transition: opacity $duration ease-out, transform $duration ease-out;
+    transform: translateX(22px) translateY(22px) scale(.6);
+    opacity: 0;
+  }
+
+  &:hover .question-mark {
+    opacity: 1;
+    transform:  translateX(22px) translateY(22px)  scale(.8) rotate(10deg);
+    transition: transform $duration cubic-bezier(0.2, 1.22, 0.84, 1.33);
+  }
+}
+
+
+
+
+
+.tile-vote-chess-two {
+
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+    transition: transform .2s ease-in-out;
+  }
+
+  .clipboard, .clipboard-two {
+    background-position: 0px -162px;
+    transition: transform $duration ease-out;
+  }
+  
+  &:hover .clipboard {
+    animation-delay: .2s;
+    transform: translateX(-25%) translateY(-5%) rotate(-10deg);
+  }
+
+  &:hover .checkmark {
+    transform: translateX(-25%) translateY(-5%) rotate(-10deg);
+  }
+
+
+  .checkmark, .checkmark-two {
+    background-position: -81px -162px;
+    transition: transform $duration ease-out, opacity $duration ease-out;
+  }
+
+
+  &:hover .clipboard-two {
+    animation-delay: .2s;
+    transform: translateX(25%) rotate(10deg) ;
+  }
+
+  &:hover .checkmark-two {
+    transform: translateX(25%)  rotate(10deg) ;
+  }
+
+}
+
+
+
+
+.tile-archive {
+
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+    transition: transform .2s ease-in-out;
+  }
+
+  .folder-front {
+    background-position: 0px -243px;
+    transition: transform $duration ease-out;
+    transform-origin: bottom;
+  }
+
+  &:hover .folder-front {
+    transform: skewX(5deg) scaleY(.95);
+  }
+
+  .board {
+    background-position: -82px -243px;
+    transition: transform $duration ease-out;
+  }
+
+  &:hover .board {
+    transform: translateX(5%) translateY(-10%) rotate(5deg);
+  }
+
+  .folder-back {
+    background-position: -162px -243px;
+    transition: transform $duration ease-out;
+  }
+}
+
 

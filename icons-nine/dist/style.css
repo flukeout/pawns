@@ -43,37 +43,6 @@ body {
     border-bottom: solid 4px #22201d;
     cursor: pointer; }
 
-.tile-tournaments .image-wrapper {
-  width: 80px;
-  height: 80px;
-  margin-top: 25px; }
-
-.tile-tournaments .medal {
-  background-position: 0 0px;
-  transition: transform 0.2s ease-out;
-  transform-origin: 50% 37.5%; }
-
-.tile-tournaments:hover .medal {
-  animation: medalWave .6s linear; }
-
-@keyframes medalWave {
-  0% {
-    animation-timing-function: ease-out;
-    transform: rotate(0); }
-  25% {
-    animation-timing-function: ease-in-out;
-    transform: rotate(-20deg); }
-  75% {
-    animation-timing-function: ease-out;
-    transform: rotate(10deg); }
-  100% {
-    transform: rotate(0); } }
-
-.tile-tournaments .strap {
-  background-position: -81px 0px;
-  transform-origin: bottom left;
-  transition: transform 0.2s ease-out; }
-
 .tile-tournaments-two .image-wrapper {
   width: 80px;
   height: 80px;
@@ -100,8 +69,7 @@ body {
   box-sizing: border-box; }
 
 .tile-tournaments-two:hover .medal-circle {
-  animation: edgeGleam .6s linear;
-  animation-fill-mode: forwards; }
+  animation: edgeGleam 0.5s linear; }
 
 @keyframes edgeGleam {
   0% {
@@ -126,55 +94,196 @@ body {
     border-right: solid 0px white; } }
 
 .tile-tournaments-two .inner-circle {
-  position: absolute;
   background: white;
-  opacity: .5;
-  width: 0px;
+  position: absolute;
+  width: 100%;
   height: 100%;
-  left: 0px;
-  top: 0;
-  transition: all 0.2s cubic-bezier(1, 0, 0, 1); }
+  opacity: 0; }
 
 .tile-tournaments-two:hover .inner-circle {
-  background: white;
-  opacity: .5;
-  animation: medalGleam .6s linear;
+  animation: medalGleam 0.5s linear;
   animation-fill-mode: forwards; }
 
 @keyframes medalGleam {
-  0% {
-    left: 0;
-    width: 0px;
-    animation-timing-function: ease-in; }
-  40% {
-    left: 0;
-    width: 10px;
-    opacity: .5; }
+  30% {
+    opacity: 0; }
   45% {
-    left: 0;
-    width: 100%;
     opacity: 1; }
-  50% {
-    left: auto;
-    right: 0;
-    width: 100%; }
   55% {
-    left: auto;
-    right: 0;
-    width: 100%;
     opacity: 1; }
-  60% {
-    left: auto;
-    right: 0;
-    opacity: .5;
-    width: 10px;
-    animation-timing-function: ease-out; }
-  100% {
-    left: auto;
-    right: 0;
-    width: 0px; } }
+  70% {
+    opacity: 0; } }
 
 .tile-tournaments-two .strap {
   background-position: -81px 0px;
-  transform-origin: bottom left;
+  transform-origin: top;
+  transition: transform 0.2s ease-out; }
+
+.tile-tournaments-three .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px;
+  transition: transform .2s ease-in-out; }
+
+.tile-tournaments-three .medal-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: all 0.2s ease-out; }
+
+.tile-tournaments-three .medal-shadow {
+  position: absolute;
+  height: 58px;
+  width: 62px;
+  left: 9px;
+  top: 26px;
+  border-radius: 50%;
+  opacity: .15;
+  background: black; }
+
+.tile-tournaments-three .medal-left, .tile-tournaments-three .medal-right {
+  transform: scale(0.85) translateY(7px);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.52, 1.67, 0.72, 0.98), opacity 0.1s ease-out; }
+
+.tile-tournaments-three:hover .medal-left {
+  transition-delay: 0, .1s;
+  transform: rotate(15deg) translateX(-20px) scale(0.85) translateY(7px);
+  opacity: .8; }
+
+.tile-tournaments-three:hover .medal-right {
+  transition-delay: 0, .1s;
+  transform: rotate(-15deg) translateX(20px) scale(0.85) translateY(7px);
+  opacity: .8; }
+
+.tile-tournaments-three:hover .medal-main {
+  transform: scale(1.05); }
+
+.tile-tournaments-three .medal {
+  background-position: 0 0px;
+  transition: transform 0.2s ease-out;
+  transform-origin: 50% 37.5%; }
+
+.tile-tournaments-three .strap {
+  background-position: -81px 0px;
+  transform-origin: top;
+  transition: transform 0.2s ease-out; }
+
+.tile-forums .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px;
+  transition: transform .2s ease-in-out; }
+
+.tile-forums .bubble-one {
+  background-position: 0px -81px;
+  transition: transform 0.2s ease-out; }
+
+.tile-forums:hover .bubble-one {
+  animation: forumBubblePop .4s ease-in-out; }
+
+.tile-forums:hover .bubble-two {
+  animation: forumBubblePop .4s ease-in-out;
+  animation-delay: .2s; }
+
+@keyframes forumBubblePop {
+  0% {
+    transform: scale(0.9); }
+  40% {
+    transform: scale(1.08); }
+  70% {
+    transform: scale(0.95); }
+  100% {
+    transform: scale(1); } }
+
+.tile-forums .bubble-two {
+  background-position: -81px -81px;
+  transition: transform 0.2s ease-out; }
+
+.tile-vote-chess .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px;
+  transition: transform .2s ease-in-out; }
+
+.tile-vote-chess .clipboard {
+  background-position: 0px -162px;
+  transition: transform 0.2s ease-out; }
+
+.tile-vote-chess:hover .clipboard {
+  animation-delay: .2s;
+  transform: scale(0.96) translateX(-5%) translateY(-5%); }
+
+.tile-vote-chess .checkmark {
+  background-position: -81px -162px;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out; }
+
+.tile-vote-chess:hover .checkmark {
+  opacity: 0;
+  transform: scale(0.96) translateX(-5%) translateY(-5%); }
+
+.tile-vote-chess .question-mark {
+  background-position: -162px -162px;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  transform: translateX(22px) translateY(22px) scale(0.6);
+  opacity: 0; }
+
+.tile-vote-chess:hover .question-mark {
+  opacity: 1;
+  transform: translateX(22px) translateY(22px) scale(0.8) rotate(10deg);
+  transition: transform 0.2s cubic-bezier(0.2, 1.22, 0.84, 1.33); }
+
+.tile-vote-chess-two .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px;
+  transition: transform .2s ease-in-out; }
+
+.tile-vote-chess-two .clipboard, .tile-vote-chess-two .clipboard-two {
+  background-position: 0px -162px;
+  transition: transform 0.2s ease-out; }
+
+.tile-vote-chess-two:hover .clipboard {
+  animation-delay: .2s;
+  transform: translateX(-25%) translateY(-5%) rotate(-10deg); }
+
+.tile-vote-chess-two:hover .checkmark {
+  transform: translateX(-25%) translateY(-5%) rotate(-10deg); }
+
+.tile-vote-chess-two .checkmark, .tile-vote-chess-two .checkmark-two {
+  background-position: -81px -162px;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out; }
+
+.tile-vote-chess-two:hover .clipboard-two {
+  animation-delay: .2s;
+  transform: translateX(25%) rotate(10deg); }
+
+.tile-vote-chess-two:hover .checkmark-two {
+  transform: translateX(25%) rotate(10deg); }
+
+.tile-archive .image-wrapper {
+  width: 80px;
+  height: 80px;
+  margin-top: 25px;
+  transition: transform .2s ease-in-out; }
+
+.tile-archive .folder-front {
+  background-position: 0px -243px;
+  transition: transform 0.2s ease-out;
+  transform-origin: bottom; }
+
+.tile-archive:hover .folder-front {
+  transform: skewX(5deg) scaleY(0.95); }
+
+.tile-archive .board {
+  background-position: -82px -243px;
+  transition: transform 0.2s ease-out; }
+
+.tile-archive:hover .board {
+  transform: translateX(5%) translateY(-10%) rotate(5deg); }
+
+.tile-archive .folder-back {
+  background-position: -162px -243px;
   transition: transform 0.2s ease-out; }
