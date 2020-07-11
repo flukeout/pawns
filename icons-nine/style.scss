@@ -186,32 +186,26 @@ body {
   
   .medal-shadow {
     position: absolute;
-    height: 58px;
+    height: 60px;
     width: 62px;
     left: 9px;
-    top: 26px;
+    top: 24px;
     border-radius: 50%;
     opacity: .15;
     background: black;
   }
 
-  .medal-left, .medal-right {
-    transform: scale(.85) translateY(7px);
-    opacity: 0;
-    transition: transform .4s cubic-bezier(.52,1.67,.72,.98), opacity .1s ease-out;
-    
-  }
 
   &:hover .medal-left {
     transition-delay: 0, .1s;
     transform: rotate(15deg) translateX(-20px) scale(.85) translateY(7px);
-    opacity: .8;
+    opacity: 1;
   }
 
   &:hover .medal-right {
     transition-delay: 0, .1s;
     transform: rotate(-15deg) translateX(20px) scale(.85) translateY(7px);
-    opacity: .8;
+    opacity: 1;
   }
 
 
@@ -222,20 +216,23 @@ body {
   }
 
   .medal {
-    background-position: 0 0px;
+    background-position: 0 0;
     transition: transform $duration ease-out;
     transform-origin: 50% 37.5%;
   }
 
- 
-  .strap {
-    background-position: -81px 0px;
-    transform-origin: top;
-    transition: transform $duration ease-out;
+  .medal-left, .medal-right {
+    transform: scale(.85) translateY(7px);
+    transition: transform .4s cubic-bezier(.52,1.67,.72,.98), opacity .2s ease-out;
+    opacity: 0;
   }
 
-  &:hover .strap {
-    
+  .medal-left {
+    background-position: -81px 0;
+  }
+
+  .medal-right {
+    background-position: -162px 0;
   }
 }
 
@@ -298,7 +295,7 @@ body {
   
   &:hover .clipboard {
     animation-delay: .2s;
-    transform: scale(.96) translateX(-5%) translateY(-5%);
+    transform: scale(1.12);
   }
 
   .checkmark {
@@ -308,70 +305,33 @@ body {
   
   &:hover .checkmark {
     opacity: 0;
-    transform: scale(.96) translateX(-5%) translateY(-5%);
+    transform: scale(1.12);
   }
 
-  .question-mark {
+  .board {
     background-position: -162px -162px;
-    transition: opacity $duration ease-out, transform $duration ease-out;
-    transform: translateX(22px) translateY(22px) scale(.6);
     opacity: 0;
-  }
-
-  &:hover .question-mark {
-    opacity: 1;
-    transform:  translateX(22px) translateY(22px)  scale(.8) rotate(10deg);
-    transition: transform $duration cubic-bezier(0.2, 1.22, 0.84, 1.33);
-  }
-}
-
-
-
-
-
-.tile-vote-chess-two {
-
-  .image-wrapper {
-    width: 80px;
-    height: 80px;
-    margin-top: 25px;
-    transition: transform .2s ease-in-out;
-  }
-
-  .clipboard, .clipboard-two {
-    background-position: 0px -162px;
-    transition: transform $duration ease-out;
-  }
-  
-  &:hover .clipboard {
-    animation-delay: .2s;
-    transform: translateX(-25%) translateY(-5%) rotate(-10deg);
-  }
-
-  &:hover .checkmark {
-    transform: translateX(-25%) translateY(-5%) rotate(-10deg);
-  }
-
-
-  .checkmark, .checkmark-two {
-    background-position: -81px -162px;
     transition: transform $duration ease-out, opacity $duration ease-out;
   }
-
-
-  &:hover .clipboard-two {
-    animation-delay: .2s;
-    transform: translateX(25%) rotate(10deg) ;
+  
+  &:hover .board {
+    opacity: 1;
+    transform: scale(1.12);
+    transition-delay: 0s, .1s;
   }
 
-  &:hover .checkmark-two {
-    transform: translateX(25%)  rotate(10deg) ;
+  .arrow {
+    background-position: -243px -162px;
+    opacity: 0;
+    transition: transform $duration ease-out, opacity $duration ease-out;
   }
-
+  
+  &:hover .arrow {
+    opacity: 1;
+    transform: scale(1.12);
+    transition-delay: 0s, .4s;
+  }
 }
-
-
-
 
 .tile-archive {
 
@@ -406,5 +366,3 @@ body {
     transition: transform $duration ease-out;
   }
 }
-
-

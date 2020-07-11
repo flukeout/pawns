@@ -135,41 +135,42 @@ body {
 
 .tile-tournaments-three .medal-shadow {
   position: absolute;
-  height: 58px;
+  height: 60px;
   width: 62px;
   left: 9px;
-  top: 26px;
+  top: 24px;
   border-radius: 50%;
   opacity: .15;
   background: black; }
 
-.tile-tournaments-three .medal-left, .tile-tournaments-three .medal-right {
-  transform: scale(0.85) translateY(7px);
-  opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.52, 1.67, 0.72, 0.98), opacity 0.1s ease-out; }
-
 .tile-tournaments-three:hover .medal-left {
   transition-delay: 0, .1s;
   transform: rotate(15deg) translateX(-20px) scale(0.85) translateY(7px);
-  opacity: .8; }
+  opacity: 1; }
 
 .tile-tournaments-three:hover .medal-right {
   transition-delay: 0, .1s;
   transform: rotate(-15deg) translateX(20px) scale(0.85) translateY(7px);
-  opacity: .8; }
+  opacity: 1; }
 
 .tile-tournaments-three:hover .medal-main {
   transform: scale(1.05); }
 
 .tile-tournaments-three .medal {
-  background-position: 0 0px;
+  background-position: 0 0;
   transition: transform 0.2s ease-out;
   transform-origin: 50% 37.5%; }
 
-.tile-tournaments-three .strap {
-  background-position: -81px 0px;
-  transform-origin: top;
-  transition: transform 0.2s ease-out; }
+.tile-tournaments-three .medal-left, .tile-tournaments-three .medal-right {
+  transform: scale(0.85) translateY(7px);
+  transition: transform 0.4s cubic-bezier(0.52, 1.67, 0.72, 0.98), opacity 0.2s ease-out;
+  opacity: 0; }
+
+.tile-tournaments-three .medal-left {
+  background-position: -81px 0; }
+
+.tile-tournaments-three .medal-right {
+  background-position: -162px 0; }
 
 .tile-forums .image-wrapper {
   width: 80px;
@@ -214,7 +215,7 @@ body {
 
 .tile-vote-chess:hover .clipboard {
   animation-delay: .2s;
-  transform: scale(0.96) translateX(-5%) translateY(-5%); }
+  transform: scale(1.12); }
 
 .tile-vote-chess .checkmark {
   background-position: -81px -162px;
@@ -222,46 +223,27 @@ body {
 
 .tile-vote-chess:hover .checkmark {
   opacity: 0;
-  transform: scale(0.96) translateX(-5%) translateY(-5%); }
+  transform: scale(1.12); }
 
-.tile-vote-chess .question-mark {
+.tile-vote-chess .board {
   background-position: -162px -162px;
-  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-  transform: translateX(22px) translateY(22px) scale(0.6);
-  opacity: 0; }
-
-.tile-vote-chess:hover .question-mark {
-  opacity: 1;
-  transform: translateX(22px) translateY(22px) scale(0.8) rotate(10deg);
-  transition: transform 0.2s cubic-bezier(0.2, 1.22, 0.84, 1.33); }
-
-.tile-vote-chess-two .image-wrapper {
-  width: 80px;
-  height: 80px;
-  margin-top: 25px;
-  transition: transform .2s ease-in-out; }
-
-.tile-vote-chess-two .clipboard, .tile-vote-chess-two .clipboard-two {
-  background-position: 0px -162px;
-  transition: transform 0.2s ease-out; }
-
-.tile-vote-chess-two:hover .clipboard {
-  animation-delay: .2s;
-  transform: translateX(-25%) translateY(-5%) rotate(-10deg); }
-
-.tile-vote-chess-two:hover .checkmark {
-  transform: translateX(-25%) translateY(-5%) rotate(-10deg); }
-
-.tile-vote-chess-two .checkmark, .tile-vote-chess-two .checkmark-two {
-  background-position: -81px -162px;
+  opacity: 0;
   transition: transform 0.2s ease-out, opacity 0.2s ease-out; }
 
-.tile-vote-chess-two:hover .clipboard-two {
-  animation-delay: .2s;
-  transform: translateX(25%) rotate(10deg); }
+.tile-vote-chess:hover .board {
+  opacity: 1;
+  transform: scale(1.12);
+  transition-delay: 0s, .1s; }
 
-.tile-vote-chess-two:hover .checkmark-two {
-  transform: translateX(25%) rotate(10deg); }
+.tile-vote-chess .arrow {
+  background-position: -243px -162px;
+  opacity: 0;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out; }
+
+.tile-vote-chess:hover .arrow {
+  opacity: 1;
+  transform: scale(1.12);
+  transition-delay: 0s, .4s; }
 
 .tile-archive .image-wrapper {
   width: 80px;
