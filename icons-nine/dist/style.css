@@ -235,15 +235,34 @@ body {
   transform: scale(1.12);
   transition-delay: 0s, .3s; }
 
-.tile-vote-chess .arrow {
+.tile-vote-chess .arrow-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  width: 56%;
+  height: 35%; }
+
+.tile-vote-chess:hover .arrow-wrapper {
+  transition: height .2s ease-out, width .2s ease-out;
+  height: 100%;
+  width: 100%;
+  transition-delay: .45s, .55s; }
+
+.tile-vote-chess .arrow.sprite {
   background-position: -243px -162px;
-  opacity: 0;
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out; }
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  top: auto;
+  bottom: 0;
+  width: 80px;
+  height: 80px; }
 
 .tile-vote-chess:hover .arrow {
   opacity: 1;
   transform: scale(1.12);
-  transition-delay: 0s, .55s; }
+  transition-delay: 0s, .45s; }
 
 .tile-events .image-wrapper {
   width: 80px;
