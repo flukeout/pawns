@@ -233,7 +233,7 @@ body {
 .tile-vote-chess:hover .board {
   opacity: 1;
   transform: scale(1.12);
-  transition-delay: 0s, .1s; }
+  transition-delay: 0s, .3s; }
 
 .tile-vote-chess .arrow {
   background-position: -243px -162px;
@@ -243,7 +243,7 @@ body {
 .tile-vote-chess:hover .arrow {
   opacity: 1;
   transform: scale(1.12);
-  transition-delay: 0s, .25s; }
+  transition-delay: 0s, .55s; }
 
 .tile-events .image-wrapper {
   width: 80px;
