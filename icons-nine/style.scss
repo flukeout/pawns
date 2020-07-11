@@ -325,11 +325,99 @@ body {
     opacity: 0;
     transition: transform $duration ease-out, opacity $duration ease-out;
   }
-  
+
   &:hover .arrow {
     opacity: 1;
     transform: scale(1.12);
-    transition-delay: 0s, .4s;
+    transition-delay: 0s, .25s;
+  }
+}
+
+
+.tile-events {
+
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+    transition: transform .2s ease-in-out;
+  }
+
+  .board {
+    background-position: 0px -324px;
+    transition: transform $duration ease-out;
+  }
+  
+  &:hover .board {
+    transform: scale(1.05);
+  }
+
+  .cup {
+    background-position: -81px -324px;
+    transition: transform $duration ease-out;
+    transform-origin: center;
+  }
+
+  &:hover .cup {
+    transform: scale(1.2) rotate(5deg);
+  }
+
+  .cup-gleam {
+    position: absolute;
+    background: rgba(255,255,255, 0);
+    width: 24px;
+    height: 25px;
+    left: 28px;
+    top: 20.5px;
+    border-radius: 0 0 12px 12px;
+    opacity: 1;
+    box-sizing: border-box;
+  }
+
+  &:hover .cup-gleam {
+    animation: cupGleam .5s linear;
+
+    @keyframes cupGleam {
+      0% {
+        border-left: solid 0px white;
+        border-right: solid 0px white;
+        animation-timing-function: ease-out;
+      }
+      30% {
+        background: rgba(255,255,255, 0);
+      }
+      40% {
+        border-left: solid 4px white;
+        border-right: solid 0px white;
+      }
+      41% {
+        border-left: solid 0px white;
+        border-right: solid 0px white;
+      }
+      45% {
+        background: rgba(255,255,255, .6);
+      }
+      60% {
+        border-left: solid 0px white;
+        border-right: solid 0px white;
+      }
+      61% {
+        animation-timing-function: ease-out;
+        border-left: solid 0px white;
+        border-right: solid 4px white;
+        
+      }
+      65% {
+        background: rgba(255,255,255, .6);
+      }
+      70% {
+        background: rgba(255,255,255, 0);
+      }
+      100% {
+        border-left: solid 0px white;
+        border-right: solid 0px white;
+      }
+    }
   }
 }
 
