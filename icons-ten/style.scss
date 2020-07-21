@@ -86,15 +86,16 @@ body {
     background: black;
   }
 
-  &:hover .medal-main {
-    transform: scale(1.05);
-  }
-
   .medal {
     background-position: 0 0;
     transition: transform $duration ease-out;
     transform-origin: 50% 37.5%;
   }
+
+  &:hover .medal-main {
+    transform: scale(1.05);
+  }
+
 
   .medal-left,
   .medal-right {
