@@ -86,20 +86,8 @@ body {
     background: black;
   }
 
-  &:hover .medal-left {
-    transition-delay: 0, 0.1s;
-    transform: rotate(15deg) translateX(-20px) scale(0.85) translateY(7px);
-    opacity: 1;
-  }
-
-  &:hover .medal-right {
-    transition-delay: 0, 0.1s;
-    transform: rotate(-15deg) translateX(20px) scale(0.85) translateY(7px);
-    opacity: 1;
-  }
-
   &:hover .medal-main {
-      transform: scale(1.05);
+    transform: scale(1.05);
   }
 
   .medal {
@@ -121,6 +109,18 @@ body {
 
   .medal-right {
     background-position: -162px 0;
+  }
+
+  &:hover .medal-left {
+    transition-delay: 0, 0.1s;
+    transform: rotate(15deg) translateX(-20px) scale(0.85) translateY(7px);
+    opacity: 1;
+  }
+
+  &:hover .medal-right {
+    transition-delay: 0, 0.1s;
+    transform: rotate(-15deg) translateX(20px) scale(0.85) translateY(7px);
+    opacity: 1;
   }
 }
 
