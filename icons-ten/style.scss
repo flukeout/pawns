@@ -96,11 +96,10 @@ body {
     transform: scale(1.05);
   }
 
-
   .medal-left,
   .medal-right {
     transform: scale(0.85) translateY(7px);
-    transition: transform 0.4s cubic-bezier(0.52, 1.67, 0.72, 0.98), opacity 0.2s ease-out;
+    transition: transform 0.4s cubic-bezier(0.52, 1.67, 0.72, 0.98), opacity $duration ease-out;
     opacity: 0;
   }
 
