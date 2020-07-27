@@ -1,5 +1,5 @@
-
 $green: #84a956;
+$text-grey: #666463;
 
 body {
   background: #2d2a27;
@@ -60,7 +60,8 @@ body {
           margin-bottom: 10px;
         }
         .score {
-          color: #666;
+          color: $text-grey;
+          font-size: 14px;
         }
       }
 
@@ -76,6 +77,17 @@ body {
           margin-bottom: 10px;
           border-radius: 2px;
           position: relative;
+          background-size: cover;
+          background-repeat: no-repeat;
+
+          &.flukeout {
+            background-image: url("../img/avatar-flukeout.png");
+          }
+
+          &.ignoble {
+            background-image: url("../img/avatar-ignoble.png");
+          }
+
         }
         
         &.winner .player-avatar {
@@ -89,7 +101,7 @@ body {
 
         .player-name {
           text-align: center;
-          color: #666463;
+          color: $text-grey;
           font-size: 14px;
         }
       }
@@ -100,7 +112,7 @@ body {
       margin-top: 30px;
 
       .rating-title {
-        color: #666;
+        color: $text-grey;
         margin-bottom: 5px;
         font-size: 12px;
       }

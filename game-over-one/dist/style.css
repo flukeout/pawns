@@ -44,7 +44,8 @@ body {
       height: 80px;
       margin-bottom: 10px; }
     .modal .players .score-card .score {
-      color: #666; }
+      color: #666463;
+      font-size: 14px; }
     .modal .players .player-card {
       margin: 0 20px; }
       .modal .players .player-card .player-avatar {
@@ -55,7 +56,13 @@ body {
         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
         margin-bottom: 10px;
         border-radius: 2px;
-        position: relative; }
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat; }
+        .modal .players .player-card .player-avatar.flukeout {
+          background-image: url("../img/avatar-flukeout.png"); }
+        .modal .players .player-card .player-avatar.ignoble {
+          background-image: url("../img/avatar-ignoble.png"); }
       .modal .players .player-card.winner .player-avatar {
         border: solid 4px #84a956;
         width: 88px;
@@ -71,7 +78,7 @@ body {
     text-align: center;
     margin-top: 30px; }
     .modal .rating-bar .rating-title {
-      color: #666;
+      color: #666463;
       margin-bottom: 5px;
       font-size: 12px; }
     .modal .rating-bar .rating-value {
