@@ -1,5 +1,8 @@
+@import "animation";
+
 $green: #84a956;
 $text-grey: #666463;
+
 
 body {
   background: #2d2a27;
@@ -11,6 +14,7 @@ body {
   flex-wrap: wrap;
 }
 
+
 .modal {
     background-color: #FFF;
     border-radius: 6px;
@@ -21,14 +25,53 @@ body {
     top: 50%;
     transform: translate(-50%,-50%);
     padding-bottom: 20px;
+    overflow: hidden;
 
     .header {
-      background: $green;
-      height: 120px;
+      background-color: $green;
+      height: 140px;
       position: absolute;
       width: 100%;
+      top: -20px;
       border-radius: 6px 6px 0 0;
+      background-image: url("../img/green-backdrop.gif");
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
+
+    .star {
+      width: 35px;
+      height: 35px;
+      
+      position: absolute;
+      background-image: url("../img/star.png");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .star-one {
+      left: 36px;
+      top: 18px;
+    }
+
+    .star-two {
+      top: 18px;
+      right: 36px;
+    }
+
+    // .star-three {
+    //   right: 100px;
+    // }
+
+    // .star-four {
+    //   right: 100px;
+    //   width: 15px;
+    //   height: 15px;
+
+    // }
+
 
     .title {
       text-align: center;
@@ -43,7 +86,6 @@ body {
       }
 
       .result-type {
-        opacity: .75;
         margin-top: 4px;
       }
     }
@@ -53,11 +95,15 @@ body {
       justify-content: center;
       position: relative;
       margin-top: 15px;
-      
+
       .score-card {
         .icon {
           height: 80px;
           margin-bottom: 10px;
+          background-image: url("../img/lightning.png");
+          background-position: center 40px;
+          background-size: contain;
+          background-repeat: no-repeat;
         }
         .score {
           color: $text-grey;
@@ -139,3 +185,4 @@ body {
     }
 
 }
+

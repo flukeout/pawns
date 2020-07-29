@@ -1,0 +1,261 @@
+
+.star-one {
+    animation: starLeft .8s ease-out, fadeOut 1s ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: .2s, .2s;
+    opacity: 0;
+
+
+    @keyframes starLeft {
+        0% {
+            transform: scale(.8) translateX(15px);
+        }
+        100% {
+            
+           transform: scale(1) rotate(-60deg) translateX(0); 
+        }
+    }
+}
+
+.star-two {
+    animation: starRight .8s ease-out, fadeOut 1s ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: .2s, .2s;
+    opacity: 0;
+
+    @keyframes starRight {
+        0% {
+            transform: scale(.8) translateX(-15px);
+        }
+        100% {
+            
+           transform: scale(1) rotate(60deg) translateX(0); 
+        }
+    }
+}
+
+@keyframes fadeOut {
+    0% {opacity: 0}
+    20% {opacity: 1}
+    80% {opacity: 1}
+    100% {opacity: 0}
+}
+
+
+
+.modal {
+    perspective: 800px;
+
+    @keyframes modalAppear {
+        0% {
+            transform: translate(-50%,-50%) scale(.9);
+        }
+        100% {
+            transform: translate(-50%,-50%) scale(1);
+        }
+    }
+}
+
+.header {
+    animation: headerAppear .4s cubic-bezier(.5,2.03,.6,.69);
+    animation-fill-mode: forwards;
+
+    @keyframes headerAppear {
+        0% {
+            transform: translateY(-70px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+}
+
+.result {
+    animation: resultAppear .3s ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: .2s;
+    opacity: 0;
+
+    @keyframes resultAppear {
+        0% {
+            opacity: 0;
+            transform: scale(.6);
+        }
+        60% {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+.modal .title .result-type {
+    animation: resultTypeAppear .4s cubic-bezier(.5,2.03,.6,.69);
+    animation-fill-mode: forwards;
+    animation-delay: .4s;
+    opacity: 0;
+
+    @keyframes resultTypeAppear {
+        0% {
+            opacity: 0;
+            transform: scaleY(0);
+        }
+        100% {
+            opacity: .75;
+            transform: scale(1);
+        }
+    }
+}
+
+.modal .player-one {
+    animation: playerOneAppear .3s cubic-bezier(.5,2.03,.6,.69);
+    animation-fill-mode: forwards;
+    animation-delay: .65s;
+    transform: translateX(-30px);
+    opacity: 0;
+
+    @keyframes playerOneAppear {
+        0% {
+            transform: translateX(-30px) rotateY(-40deg);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0px);
+            opacity: 1;
+            
+        }
+    }
+}
+
+.modal .player-two {
+    animation: playerTwoAppear .3s cubic-bezier(.5,2.03,.6,.69);
+    animation-fill-mode: forwards;
+    animation-delay: .75s;
+    transform: translateX(30px);
+    opacity: 0;
+
+
+    @keyframes playerTwoAppear {
+        0% {
+            transform: translateX(30px) rotateY(40deg);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0px);
+            opacity: 1;
+            
+        }
+    }
+}
+
+.modal .score-card .icon {
+    animation: scoreCardIconAppear .3s cubic-bezier(.5,2.03,.6,.69);
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    transform: translateX(-10px);
+    opacity: 0;
+
+
+    @keyframes scoreCardIconAppear {
+        0% {
+            transform: translateY(-10px) rotateX(20deg);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+.modal .score-card .score {
+    animation: scoreCardScoreAppear .3s cubic-bezier(.5,2.03,.6,.69);
+    animation-fill-mode: forwards;
+    animation-delay: 1.1s;
+    transform: translateX(-10px);
+    opacity: 0;
+
+
+    @keyframes scoreCardScoreAppear {
+        0% {
+            transform: scale(.4);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+            
+        }
+    }
+}
+
+
+.modal .rating-bar {
+    animation: ratingBarAppear .3s cubic-bezier(.5,2.03,.6,.69);
+    animation-fill-mode: forwards;
+    animation-delay: 1.15s;
+    opacity: 0;
+
+
+    @keyframes ratingBarAppear {
+        0% {
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+}
+
+
+.modal .rating-bar .rating-value {
+    animation: ratingValueAppear .3s cubic-bezier(.5,2.03,.6,.69);
+    animation-fill-mode: forwards;
+    animation-delay: 1.25s;
+    opacity: 0;
+
+
+    @keyframes ratingValueAppear {
+        0% {
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+}
+
+.modal .rating-bar .rating-change {
+    animation: ratingChangeAppear .2s ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: 1.55s;
+    opacity: 0;
+
+
+    @keyframes ratingChangeAppear {
+        0% {
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+        60% {
+            transform: translateX(5px);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+}
+
+
+

@@ -5,7 +5,7 @@
   },
   "scripts": {
     "css": "node-sass style.scss -o dist",
-    "css:watch": "npm run css && node-sass style.scss -wo dist",
+    "css:watch": "npm run css && node-sass style.scss animation.scss -wo dist",
     "lint": "npx stylelint \"**/*.scss\" --fix"
   },
   "devDependencies": {
