@@ -80,7 +80,7 @@
     transform: scaleY(0); }
   100% {
     opacity: .75;
-    transform: scale(1); } }
+    transform: scaleY(1); } }
 
 .modal .player-one {
   animation: playerOneAppear 0.3s cubic-bezier(0.5, 2.03, 0.6, 0.69);
