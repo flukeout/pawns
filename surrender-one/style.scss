@@ -1,0 +1,178 @@
+@import "animation";
+
+$green: #84a956;
+$text-grey: #666463;
+
+$wave-duration: 5s;
+$flag-angle: -60deg;
+$flag-reverse-angle: 60deg;
+
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  flex-wrap: wrap;
+}
+
+.flag-wrapper {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  left: calc(50% - 150px);
+  transform-origin: 50% 120%;
+  animation: flagwave $wave-duration linear infinite;
+  
+  @keyframes flagwave {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate($flag-angle);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate($flag-reverse-angle);
+    }
+    100% {
+      transform: rotate(0);
+    }
+  }
+
+  .stick {
+    position: absolute;
+    left: calc(50% - 6px);
+    height: 100%;
+    width: 12px;
+    background: #814F35;
+    border-radius: 4px;
+  }
+
+  .flag {
+    position: absolute;
+    top: 4px;
+    height: 40%;
+    left: 50%;
+    width: 50%;
+    background: rgba(255,255,255,.1);
+    animation: upperFlagWidth $wave-duration linear infinite;
+    animation-fill-mode: forwards;
+
+    @keyframes upperFlagWidth {
+      0% {
+        width: 100px;
+      }
+      25% {
+        width: 100px;
+        left: 50%;
+        right: auto;
+      }
+      35% {
+        width: 0px;
+        left: 50%;
+        right: auto;
+      }
+      36% {
+        right: 50%;
+        left: auto;
+      }
+      45% {
+        width: 100px;
+        right: 50%;
+        left: auto;
+      }
+      50% {
+        width: 100px;
+        right: 50%;
+        left: auto;
+      }
+      75% {
+        width: 100px;
+        right: 50%;
+        left: auto;
+      }
+      85% {
+        width: 0px;
+        right: 50%;
+        left: auto;
+      }
+      86% {
+        left: 50%;
+        right: auto;
+      }
+      100% {
+        left: 50%;
+        right: auto;
+        width: 100px;
+      }
+
+
+      // 30% {
+      //   right: 50%;
+      //   left: auto;
+      //   width: 0px;
+      // }
+      // 31% {
+      //   width: 0px;
+
+      // }
+
+      // 40% {
+      //   width: 100px;
+      //   right: 50%;
+      //   left: auto;
+      // }
+      // 41% {
+      //   right: 50%;
+      //   left: auto;
+      //   width: 100px;
+      // }
+      // 75% {
+      //   width: 100px;
+      //   right: 50%;
+      //   left: auto;
+      // }
+      // 100% {
+      //   width: 0px;
+      //   right: 50%;
+      //   left: auto;
+      // }
+    }
+  }
+  
+  .flag-upper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    top: 0;
+    left: 0;
+  }
+
+  .flag-lower {
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background: #DDD;
+    top: 20px;
+    right: 0;
+    border-radius: 0 0 10px 0;
+    animation: lowerFlagWidth 6s linear;
+    animation-fill-mode: forwards;
+    
+    @keyframes lowerFlagWidth {
+      0% {
+        width: 100px;
+      }
+      100% {
+        width: 0px;
+      }
+    }
+  }
+
+}

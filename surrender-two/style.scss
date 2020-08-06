@@ -1,0 +1,202 @@
+@import "animation";
+
+$wave-duration: 2s;
+$flag-angle: -30deg;
+$flag-reverse-angle: 30deg;
+$flag-height: 50%;
+$stick-height: 500px;
+$flag-width: 120px;
+
+:root {
+    --duration: 2s;
+    --flag-height: 50%;
+    --stick-height: 500px;
+    --flag-angle: -30deg;
+    --flag-reverse-angle: 30deg;
+    --duration: 2s;
+    --flag-width: 120px;
+}
+
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.columns {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  color: white;
+
+  .controls {
+    width: 100%;
+    display: block;
+    font-family: sans-serif;
+    color: rgba(255,255,255,.8);
+  }
+  
+  input {
+    display: block;
+    width: 80%;
+    margin: 5px 0 25px 0;
+  }
+
+  .first-column {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex: 2;
+    position: relative;
+  }
+
+  .second-column {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+  }
+}
+
+.flag-wrapper {
+  height: var(--stick-height);
+  position: relative;
+  transform-origin: 50% 120%;
+  
+  &.animated {
+    animation: flagwave var(--duration) linear infinite;
+  }
+  
+
+  @keyframes flagwave {
+    0% {
+      transform: rotate(0deg);
+      animation-timing-function: ease-out;
+    }
+    25% {
+      transform: rotate(var(--flag-angle));
+      animation-timing-function: ease-in;
+    }
+    50% {
+      transform: rotate(0deg);
+      animation-timing-function: ease-out;
+    }
+    75% {
+      transform: rotate(var(--flag-reverse-angle));
+      animation-timing-function: ease-in;
+    }
+    100% {
+      transform: rotate(0);
+      animation-timing-function: ease-out;
+    }
+  }
+
+  .stick {
+    position: absolute;
+    left: calc(50% - 6px);
+    height: 100%;
+    width: 12px;
+    background: #814F35;
+    border-radius: 10px;
+    top: -4px;
+    border-left: solid 6px #aa664b;
+    border-top: solid 2px  #aa664b;
+    box-sizing: border-box;
+    opacity: 1;
+    z-index: 3;
+  }
+
+  .flag-right {
+    position: absolute;
+    height: var(--flag-height);
+    width: var(--flag-width);
+    left: 50%;
+    background: white;
+    animation: flagRight var(--duration) linear infinite;
+    transform-origin: left;
+
+    @keyframes flagRight {
+      0% {
+        width: var(--flag-width);
+        border-radius: 0 50px 5px 0;
+        background: #FFFFFF;
+        transform: rotate(0deg);
+      }
+      10% {
+        border-radius: 0 5px 5px 0;
+      }
+      20% {
+        width: var(--flag-width);
+        background: #FFFFFF;
+        transform: rotate(0deg);
+      }
+      45% {
+        width: 0px;
+        border-radius: 0 5px 5px 0;
+        background: #777;
+        transform: rotate(10deg) scaleY(.75) translateY(5%);
+      }
+      75% {
+        width: 0px;
+        border-radius: 0 100px 50px 0;
+        background: white;
+        transform: rotate(0deg) scaleY(1);
+      }
+      100% {
+        width: var(--flag-width);
+        border-radius: 0 50px 5px 0;
+        background: white;
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  .flag-left {
+    position: absolute;
+    height: var(--flag-height);
+    width: var(--flag-width);
+    right: 50%;
+    background: white;
+    animation: flagLeft var(--duration) linear infinite;
+    transform-origin: right;
+
+    @keyframes flagLeft {
+      0% {
+        width: 0px;
+        border-radius: 100px 0 0 50px;
+        background: #777;
+      }
+      25% {
+        width: 0px;
+        border-radius: 100px 0 0 50px;
+        background: white;
+      }
+      50% {
+        width: var(--flag-width);
+        border-radius: 50px 0 0 5px;
+        background: white;
+      }
+      60% {
+        border-radius: 5px 0 0 5px;
+      }
+      70% {
+        width: var(--flag-width);
+        background: white;
+        transform: none;
+      }
+      95% {
+        width: 0px;
+        transform: rotate(-10deg) scaleY(.75) translateY(5%);
+        background: #777;
+      }
+      100% {
+        width: 0px;
+        transform: rotate(-10deg) scaleY(.75) translateY(5%);
+        background: #777;
+      }
+    }
+  }
+
+}

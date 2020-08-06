@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Game Over Modal Animations</title>
+    <link rel="stylesheet" href="dist/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="dist/style.css" type="text/css" media="screen">
+    <script src="app.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet"> -->
+  </head>
+
+  <body>
+    <div class="columns">
+      <div class="first-column">
+          <div class="flag-wrapper animated">
+            <div class="flag-right"></div>
+            <div class="flag-left"></div>
+            <div class="stick"></div>
+          </div>
+      </div>
+      <div class="second-column">
+        <div class="controls">
+          Speed
+          <input min=".05" max="5" step=".1" name="--duration" units="s" type="range" />
+
+          Stick Height
+          <input min="50" max="800" step="1" name="--stick-height" units="px" type="range" />
+
+          Flag Height
+          <input min="5" max="100" step="1" name="--flag-height" units="%" type="range" />
+
+          Flag Width
+          <input min="20" max="400" step="1" name="--flag-width" units="px" type="range" />
+
+          Angle Left
+          <input min="-90" max="0" step="1" name="--flag-angle" units="deg" type="range" />
+
+          Angle Right
+          <input min="0" max="90" step="1" name="--flag-reverse-angle" units="deg" type="range" />
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
+
+<script></script>

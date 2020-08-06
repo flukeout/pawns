@@ -1,0 +1,62 @@
+body {
+  background: #2d2a27;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  flex-wrap: wrap; }
+
+.flag-wrapper {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  left: calc(50% - 150px);
+  transform-origin: 50% 120%;
+  animation: flagwave 5s linear infinite, flagBounce 5s linear infinite; }
+
+@keyframes flagwave {
+  0% {
+    transform: rotate(0deg) translateY(-15px);
+    animation-timing-function: ease-out; }
+  25% {
+    transform: rotate(-45deg) translateY(0px);
+    animation-timing-function: ease-in; }
+  50% {
+    transform: rotate(0deg) translateY(15px);
+    animation-timing-function: ease-out; }
+  75% {
+    transform: rotate(45deg) translateY(0px);
+    animation-timing-function: ease-in; }
+  100% {
+    transform: rotate(0) translateY(-15px); } }
+  .flag-wrapper .stick {
+    position: absolute;
+    left: calc(50% - 6px);
+    height: 100%;
+    width: 12px;
+    background: #814F35;
+    border-radius: 4px; }
+  .flag-wrapper .flag-first {
+    position: absolute;
+    top: 4px;
+    height: 40%;
+    left: 50%;
+    width: 100px;
+    background: white;
+    animation: flagFirst 5s linear infinite;
+    animation-fill-mode: forwards; }
+
+@keyframes flagFirst {
+  0% {
+    width: 100px; }
+  25% {
+    width: 100px; }
+  45% {
+    width: 0px; }
+  75% {
+    width: 0px; }
+  90% {
+    width: 100px; }
+  100% {
+    width: 100px; } }
