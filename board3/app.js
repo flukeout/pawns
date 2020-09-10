@@ -196,11 +196,18 @@ const gameOver = method => {
         });
     }
 
+    let kings = document.querySelectorAll(".bk, .wk");
+
+    kings.forEach(e => {
+        ["winner","checkmate","surrender"].forEach(className => {
+            e.classList.remove(className);
+        });
+    })
+
     if (method == "clear") {
         return;
     }
 
-    let kings = document.querySelectorAll(".bk, .wk");
 
     kings.forEach(e => {
         let statusBubble = document.createElement("div");
@@ -213,21 +220,26 @@ const gameOver = method => {
         if(method == "checkmate") {
             if(e.classList.contains("bk")) {
                 statusBubble.classList.add("winner");
+                e.classList.add("winner");
             } else {
                 statusBubble.classList.add("checkmate");
+                e.classList.add("checkmate");
             }
         }
 
         if(method == "surrender") {
             if(e.classList.contains("bk")) {
                 statusBubble.classList.add("surrender");
+                e.classList.add("surrender");
             } else {
                 statusBubble.classList.add("winner");
+                e.classList.add("winner");
             }
         }
 
         if(method == "draw") {
             statusBubble.classList.add("draw");
+            e.classList.add("draw");
         }
 
         e.append(statusBubble);
@@ -246,11 +258,6 @@ const placePieces = (boardSelector, pieces) => {
         pieceEl.style.height = 100/boardSize + "%";
         pieceEl.style.bottom = ((piece.rank - 1) * 100/boardSize) + "%";
         pieceEl.style.left = (alphabet.indexOf(piece.file) * 100/boardSize) + "%";
-
-
-        // let shadowEl = document.createElement("div");
-        // shadowEl.classList.add("shadow");
-        // pieceEl.append(shadowEl);
 
         let figureEl = document.createElement("div");
         figureEl.classList.add("figure");
