@@ -1,13 +1,20 @@
 @import "animation";
 
+$wave-duration: 2s;
+$flag-angle: -30deg;
+$flag-reverse-angle: 30deg;
+$flag-height: 50%;
+$stick-height: 500px;
+$flag-width: 120px;
+
 :root {
-    --flag-height: 60%;
-    --stick-height: 60px;
-    --flag-angle: -25deg;
-    --flag-reverse-angle: 25deg;
-    --duration: 1s;
-    --flag-width: 36px;
-    --sharp-border-radius: 2px; // Un-rounded flag corner
+    --duration: 2s;
+    --flag-height: 50%;
+    --stick-height: 500px;
+    --flag-angle: -30deg;
+    --flag-reverse-angle: 30deg;
+    --duration: 2s;
+    --flag-width: 120px;
 }
 
 body {
@@ -53,22 +60,15 @@ body {
   }
 }
 
-.flag-icon {
-  background: black;
-  width: 100px;
-  height: 100px;
-  border-radius: 50px 50px 50px 0;
-}
-
 .flag-wrapper {
   height: var(--stick-height);
   position: relative;
   transform-origin: 50% 120%;
-  top: 22px;
   
   &.animated {
     animation: flagwave var(--duration) linear infinite;
   }
+  
 
   @keyframes flagwave {
     0% {
@@ -95,13 +95,14 @@ body {
 
   .stick {
     position: absolute;
-    left: calc(50% - 4px);
+    left: calc(50% - 6px);
     height: 100%;
-    width: 8px;
+    width: 12px;
     background: #814F35;
-    border-radius: 4px;
-    top: -2px;
-    border-left:  solid 5px #aa664b;
+    border-radius: 10px;
+    top: -4px;
+    border-left: solid 6px #aa664b;
+    border-top: solid 2px  #aa664b;
     box-sizing: border-box;
     opacity: 1;
     z-index: 3;
@@ -119,12 +120,12 @@ body {
     @keyframes flagRight {
       0% {
         width: var(--flag-width);
-        border-radius: 0 25px var(--sharp-border-radius) 0;
+        border-radius: 0 50px 5px 0;
         background: #FFFFFF;
         transform: rotate(0deg);
       }
       10% {
-        border-radius: 0 var(--sharp-border-radius) var(--sharp-border-radius) 0;
+        border-radius: 0 5px 5px 0;
       }
       20% {
         width: var(--flag-width);
@@ -133,19 +134,19 @@ body {
       }
       45% {
         width: 0px;
-        border-radius: 0 var(--sharp-border-radius) var(--sharp-border-radius) 0;
+        border-radius: 0 5px 5px 0;
         background: #777;
         transform: rotate(10deg) scaleY(.75) translateY(5%);
       }
       75% {
         width: 0px;
-        border-radius: 0 50px 25px 0;
+        border-radius: 0 100px 50px 0;
         background: white;
         transform: rotate(0deg) scaleY(1);
       }
       100% {
         width: var(--flag-width);
-        border-radius: 0 25px var(--sharp-border-radius) 0;
+        border-radius: 0 50px 5px 0;
         background: white;
         transform: rotate(0deg);
       }
@@ -164,21 +165,21 @@ body {
     @keyframes flagLeft {
       0% {
         width: 0px;
-        border-radius: 50px 0 0 50px;
+        border-radius: 100px 0 0 50px;
         background: #777;
       }
       25% {
         width: 0px;
-        border-radius: 50px 0 0 25px;
+        border-radius: 100px 0 0 50px;
         background: white;
       }
       50% {
         width: var(--flag-width);
-        border-radius: 25px 0 0 var(--sharp-border-radius);
+        border-radius: 50px 0 0 5px;
         background: white;
       }
       60% {
-        border-radius: var(--sharp-border-radius) 0 0 var(--sharp-border-radius);
+        border-radius: 5px 0 0 5px;
       }
       70% {
         width: var(--flag-width);

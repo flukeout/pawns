@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 
 	document.querySelector(".flag-wrapper").addEventListener("animationiteration", e => {
-		
+
 		if(e.animationName == "flagwave") {
 			if(angleChanged) {
 				e.srcElement.classList.remove("animated");
