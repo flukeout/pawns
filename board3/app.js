@@ -7,6 +7,7 @@ let gleamDelay = 1000;
 let boardSelector = ".board"
 let alphabet = "abcdefghijklmnopqrstuvwxyz";
 let pieces = [
+
     { "rank" : 1
     , "file" : "a"
     , "type": "wr"
@@ -74,13 +75,11 @@ let pieces = [
     , "player" : 1
     },
 
-
     { "rank" : 5
     , "file" : "c"
     , "type": "wn"
     , "player" : 1
     },
-
 
     { "rank" : 4
     , "file" : "g"
@@ -88,14 +87,11 @@ let pieces = [
     , "player" : 1
     },
 
-
     { "rank" : 2
     , "file" : "f"
     , "type": "wp"
     , "player" : 1
     },
-
-
 
     { "rank" : 7
     , "file" : "b"
@@ -114,7 +110,6 @@ let pieces = [
     , "type": "bp"
     , "player" : 2
     },
-
 
     { "rank" : 8
     , "file" : "e"
@@ -199,15 +194,15 @@ const gameOver = method => {
     let kings = document.querySelectorAll(".bk, .wk");
 
     kings.forEach(e => {
-        ["winner","checkmate","surrender"].forEach(className => {
+        ["winner","checkmate","surrender","draw"].forEach(className => {
             e.classList.remove(className);
+            e.style.width = e.getBoundingClientRect().width + "px";
         });
     })
 
     if (method == "clear") {
         return;
     }
-
 
     kings.forEach(e => {
         let statusBubble = document.createElement("div");

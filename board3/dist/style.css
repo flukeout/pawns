@@ -269,3 +269,92 @@ body {
     animation-timing-mode: ease-out; }
   100% {
     transform: scale(0.6); } }
+
+.surrender .figure {
+  animation: surrenderShake .15s ease-in-out;
+  animation-iteration-count: 8;
+  transform-origin: bottom; }
+
+@keyframes surrenderShake {
+  0% {
+    transform: rotate(0); }
+  25% {
+    transform: rotate(-2deg); }
+  50% {
+    transform: rotate(0); }
+  75% {
+    transform: rotate(2deg); }
+  100% {
+    transform: rotate(0); } }
+
+.winner .figure {
+  animation: winnerJump 1s ease-in-out;
+  animation-iteration-count: 2;
+  transform-origin: bottom; }
+
+@keyframes winnerJump {
+  0% {
+    transform: rotate(0) translateY(0);
+    animation-timing-function: ease-in; }
+  20% {
+    transform: scaleY(0.9) scaleX(1.05) translateY(0); }
+  30% {
+    transform: scaleY(1) translateY(0);
+    animation-timing-function: ease-out; }
+  50% {
+    transform: scale(1) translateY(-7px);
+    animation-timing-function: ease-in; }
+  70% {
+    transform: scaleY(1) translateY(0); }
+  80% {
+    transform: scaleY(0.9) scaleX(1.05) translateY(0); }
+  100% {
+    transform: rotate(0) translateY(0); } }
+
+.checkmate .figure {
+  animation: checkMate 1.5s ease-in-out;
+  animation-iteration-count: 1;
+  transform-origin: center;
+  animation-fill-mode: forwards; }
+
+@keyframes checkMate {
+  0% {
+    transform: rotate(0) translateY(0);
+    animation-timing-function: ease-in; }
+  20% {
+    transform: scaleY(0.9) scaleX(1.05) translateY(4px); }
+  30% {
+    transform: scaleY(1) translateY(0);
+    animation-timing-function: ease-out; }
+  45% {
+    transform: scale(1) translateY(-20px) rotate(75deg);
+    animation-timing-function: ease-in; }
+  60% {
+    transform: scale(1) translateY(-20px) rotate(75deg);
+    animation-timing-function: ease-in; }
+  70% {
+    transform: scaleY(1) translateY(0) rotate(75deg);
+    animation-timing-function: ease-in; }
+  80% {
+    transform: scaleY(0.9) scaleX(1.1) translateY(4px) rotate(75deg);
+    animation-timing-function: ease-out; }
+  100% {
+    transform: rotate(0) translateY(0) rotate(75deg); } }
+
+.draw .figure {
+  animation: draw 1.5s ease-in-out;
+  animation-iteration-count: 1;
+  transform-origin: 50% 94%;
+  animation-fill-mode: forwards; }
+
+@keyframes draw {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: ease-out; }
+  35% {
+    transform: scaleY(1.15) scaleX(0.95); }
+  45% {
+    transform: scaleY(1.15) scaleX(0.95);
+    animation-timing-function: ease-in-out; }
+  100% {
+    transform: scaleY(1) scaleX(1); } }
