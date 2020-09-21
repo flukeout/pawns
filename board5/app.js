@@ -199,12 +199,13 @@ const gameOver = method => {
 
     let kings = document.querySelectorAll(".bk, .wk");
 
-    kings.forEach(e => {
-        ["winner","checkmate","surrender","draw"].forEach(className => {
-            e.classList.remove(className);
-            e.style.width = e.getBoundingClientRect().width + "px";
-        });
-    })
+    // kings.forEach(e => {
+    //     ["winner","checkmate","surrender","draw"].forEach(className => {
+    //         e.classList.remove(className);
+    //         let elWidth = e.style.width;
+    //         e.style.width = elWidth;
+    //     });
+    // })
 
     if (method == "clear") {
         return;
