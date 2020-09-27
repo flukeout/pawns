@@ -1,0 +1,499 @@
+body {
+  background: #312e2b;
+  display: flex;
+  font-family: sans-serif; }
+
+.square.even {
+  background-color: #eeeed2; }
+
+.square.odd {
+  background-color: #769656; }
+
+.wrapper {
+  margin: auto;
+  display: flex; }
+
+.piece {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: transform .15s ease-out; }
+  .piece.highlight {
+    transform: scale(1.12) rotate(-2deg); }
+  .piece .figure {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    transition: transform 0.15s ease-out; }
+  .piece .shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-image: url(../img/pieces/shadow.png);
+    transition: all 0.15s ease-out;
+    opacity: 0;
+    transform: scale(0.9); }
+  .piece.lift .shadow {
+    opacity: 0.2; }
+  .piece.lift .figure {
+    transform: translateY(-5px); }
+
+.piece.wp .figure {
+  background-image: url(../img/pieces/wp.png); }
+
+.piece.bp .figure {
+  background-image: url(../img/pieces/bp.png); }
+
+.piece.wr .figure {
+  background-image: url(../img/pieces/wr.png); }
+
+.piece.br .figure {
+  background-image: url(../img/pieces/br.png); }
+
+.piece.wn .figure {
+  background-image: url(../img/pieces/wn.png); }
+
+.piece.bn .figure {
+  background-image: url(../img/pieces/bn.png); }
+
+.piece.wq .figure {
+  background-image: url(../img/pieces/wq.png); }
+
+.piece.bq .figure {
+  background-image: url(../img/pieces/bq.png); }
+
+.piece.wb .figure {
+  background-image: url(../img/pieces/wb.png); }
+
+.piece.bb .figure {
+  background-image: url(../img/pieces/bb.png); }
+
+.piece.wk .figure {
+  background-image: url(../img/pieces/wk.png); }
+
+.piece.bk .figure {
+  background-image: url(../img/pieces/bk.png); }
+
+.piece {
+  z-index: 999; }
+
+.arrow {
+  z-index: 997; }
+
+.square {
+  z-index: 1; }
+
+.column {
+  padding: 0 20px; }
+  .column button {
+    display: block;
+    margin-bottom: 12px; }
+
+.board {
+  width: 80vh;
+  z-index: 2;
+  height: 80vh;
+  position: relative; }
+  .board .coordinate {
+    position: absolute;
+    color: white;
+    opacity: 0.5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .board .coordinate.file {
+      bottom: -20px; }
+    .board .coordinate.rank {
+      left: -20px; }
+  .board .square {
+    float: left;
+    box-sizing: border-box;
+    z-index: 1;
+    transition: transform 0.15s ease-out;
+    position: relative; }
+    .board .square .square-name {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: rgba(0, 0, 0, 0.4);
+      font-weight: bold;
+      font-size: 14px;
+      opacity: 0;
+      display: block; }
+    .board .square.highlight {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      transform: scale(1.12) rotate(-2deg);
+      border-radius: 4px; }
+      .board .square.highlight .square-name {
+        transition: all 0.2s ease-out;
+        opacity: 1;
+        transform: scale(1); }
+    .board .square.highlight {
+      background: #2da0e0;
+      background: #f7a539;
+      background: #f6f68a; }
+    .board .square::after {
+      display: none; }
+
+.arrow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-position: center;
+  background-repeat: no-repeat; }
+  .arrow.up {
+    bottom: 0;
+    animation: arrowUp 0.15s ease-out forwards;
+    transform-origin: 50% 80%;
+    animation-delay: 0.1s;
+    opacity: 0; }
+
+@keyframes arrowUp {
+  0% {
+    opacity: 0.4;
+    transform: scaleY(0.8); }
+  80% {
+    transform: scaleY(1.02); }
+  100% {
+    transform: scaleY(1);
+    opacity: 1; } }
+  .arrow.down {
+    top: 0;
+    transform: rotate(180deg);
+    animation: arrowDown 0.15s ease-out forwards;
+    transform-origin: center; }
+
+@keyframes arrowDown {
+  0% {
+    opacity: 0.4;
+    transform: scaleY(0.8) rotate(180deg); }
+  80% {
+    transform: scaleY(1.02) rotate(180deg); }
+  100% {
+    transform: scaleY(1) rotate(180deg);
+    opacity: 1; } }
+  .arrow.length-1 {
+    height: 200%;
+    background-image: url("../img/arrow1.svg?1"); }
+  .arrow.length-2 {
+    height: 300%;
+    background-image: url("../img/arrow2.svg?1"); }
+
+.bk .status-bubble {
+  background-color: #312e2b; }
+
+.wk .status-bubble:not(.winner) {
+  background-color: #f8f8f8;
+  border: solid 3px #e8e8e8; }
+  .wk .status-bubble:not(.winner) .icon {
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    left: -3px;
+    top: -3px; }
+
+.winner.bk .status-bubble,
+.winner.wk .status-bubble {
+  background-color: #dbac16;
+  border: none; }
+
+@keyframes statusAppear {
+  0% {
+    opacity: 1;
+    transform: scale(0.9) translateY(10px);
+    animation-timing-mode: ease-out; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
+
+.status-bubble {
+  height: 60%;
+  width: 60%;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+  top: -30%;
+  right: -30%;
+  animation: statusAppear .15s ease-out;
+  transform-origin: center;
+  box-sizing: border-box;
+  transform: scale(1);
+  animation-fill-mode: forwards; }
+  .status-bubble .icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat; }
+  .status-bubble .icon-frame {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0; }
+  .status-bubble.winner .icon {
+    background-image: url(../img/icons/crown-icon.png);
+    animation: crownUp .5s ease-out;
+    transform: translateY(3px);
+    animation-fill-mode: forwards; }
+
+@keyframes crownUp {
+  0% {
+    transform: translateY(3px) scale(0.9); }
+  40% {
+    transform: translateY(-2px) scale(1); }
+  100% {
+    transform: translateY(0px); } }
+
+.bk.draw .icon .icon-frame {
+  background-image: url(../img/icons/draw-black-spritesheet.png); }
+
+.wk.draw .icon .icon-frame {
+  background-image: url(../img/icons/draw-white-spritesheet.png); }
+
+.wk.checkmate .icon-frame {
+  background-image: url(../img/icons/checkmate-white-spritesheet.png); }
+
+.draw .icon .one {
+  background-position: left;
+  background-size: 300%;
+  animation: surrenderOne 0.2s cubic-bezier(0.06, 0.79, 0.5, 1.4);
+  animation-delay: .15s;
+  opacity: 0;
+  animation-fill-mode: forwards; }
+
+@keyframes surrenderOne {
+  0% {
+    transform: translateX(7px) translateY(-10px);
+    opacity: 0; }
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 1; } }
+
+.draw .icon .two {
+  background-position: right;
+  background-size: 300%;
+  animation: surrenderTwo 0.2s cubic-bezier(0.06, 0.79, 0.5, 1.4);
+  animation-delay: .2s;
+  opacity: 0;
+  animation-fill-mode: forwards; }
+
+@keyframes surrenderTwo {
+  0% {
+    transform: translateX(-8px) translateY(10px);
+    opacity: 0; }
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 1; } }
+
+.draw .icon .divider {
+  background-position: center;
+  background-size: 300%;
+  animation: surrenderDivider .2s ease-out;
+  animation-delay: .05s;
+  opacity: 0;
+  animation-fill-mode: forwards; }
+
+@keyframes surrenderDivider {
+  0% {
+    transform: scale(0);
+    opacity: 0; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
+
+.timeout .figure,
+.surrender .figure,
+.surrender-2 .figure,
+.surrender-3 .figure,
+.checkmate .figure {
+  transform-origin: center;
+  transition: transform .3s ease-out;
+  transform: translateX(3px) rotate(75.01deg); }
+
+.checkmate .icon .vertical {
+  background-position: left;
+  background-size: 200%; }
+
+.checkmate .icon .vertical, .checkmate .icon .horizontal {
+  animation: checkMate .1s ease-out;
+  animation-delay: .25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-delay: .2s;
+  opacity: 0; }
+
+@keyframes checkMate {
+  0% {
+    transform: scale(1.7);
+    opacity: .5; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
+
+.checkmate .icon .horizontal {
+  background-position: right;
+  background-size: 200%;
+  animation-fill-mode: forwards; }
+
+.checkmate.status-bubble {
+  animation: statusAppear .15s ease-out, iconPop .2s ease-out;
+  animation-delay: 0s, .25s; }
+
+@keyframes iconPop {
+  0% {
+    transform: scale(1); }
+  40% {
+    transform: scale(0.9); }
+  100% {
+    transform: scale(1); } }
+
+.bk.timeout .icon-frame {
+  background-image: url(../img/icons/timeout-black-spritesheet.png); }
+
+.timeout .icon {
+  animation: clockPop .2s ease-out;
+  animation-delay: 1.2s; }
+
+@keyframes clockPop {
+  0% {
+    transform: scale(1); }
+  40% {
+    transform: scale(1.15); }
+  100% {
+    transform: scale(1); } }
+  .timeout .icon .clock {
+    background-position: left;
+    background-size: 200%; }
+  .timeout .icon .finger {
+    background-position: right;
+    background-size: 200%;
+    animation: fingerSpin 1.2s linear;
+    animation-fill-mode: forwards;
+    transform-origin: center; }
+
+@keyframes fingerSpin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(359deg); } }
+
+.wk.surrender .icon-frame {
+  background-image: url(../img/icons/surrender-white-spritesheet.png); }
+
+.surrender .icon {
+  animation: flagRotate 1s ease-out;
+  animation-iteration-count: 1;
+  transform-origin: 40% 80%;
+  animation-delay: .05s;
+  animation-fill-mode: forwards;
+  transform: rotate(20deg); }
+
+@keyframes flagRotate {
+  0% {
+    transform: rotate(20deg); }
+  100% {
+    transform: rotate(0deg); } }
+  .surrender .icon .stick {
+    background-position: left;
+    background-size: 200%; }
+  .surrender .icon .flag {
+    background-position: right;
+    background-size: 200%;
+    animation: flagWave .2s linear, flagFinish .1s ease-out;
+    animation-delay: 0s, 2s;
+    animation-iteration-count: 10, 1;
+    animation-fill-mode: forwards;
+    transform-origin: 38% 38%; }
+
+@keyframes flagWave {
+  0% {
+    transform: skewY(-4deg);
+    animation-timing-function: ease-in; }
+  25% {
+    transform: skewY(0);
+    animation-timing-function: ease-out; }
+  50% {
+    transform: skewY(4deg);
+    animation-timing-function: ease-in; }
+  75% {
+    transform: skewY(0);
+    animation-timing-function: ease-out; }
+  100% {
+    transform: skewY(-4deg); } }
+
+@keyframes flagFinish {
+  0% {
+    transform: skewY(-3deg); }
+  100% {
+    transform: none; } }
+
+.wk.surrender-2 .icon-frame {
+  background-image: url(../img/icons/surrender-white-spritesheet-2.png); }
+
+.surrender-2 .icon {
+  transform: rotate(-10deg); }
+  .surrender-2 .icon .stick {
+    background-position: left;
+    background-size: 200%; }
+  .surrender-2 .icon .flag {
+    background-position: right;
+    background-size: 200%;
+    animation: flagLift2 1s linear;
+    animation-delay: .4s;
+    animation-iteration-count: 1;
+    transform: translateY(24%);
+    animation-fill-mode: forwards;
+    transform-origin: 38% 38%; }
+
+@keyframes flagLift2 {
+  0% {
+    transform: translateY(24%);
+    animation-timing-function: ease-in-out; }
+  30% {
+    transform: translateY(12%) skewY(8deg);
+    animation-timing-function: ease-out; }
+  49% {
+    transform: translateY(12%) skewY(0deg); }
+  50% {
+    transform: translateY(12%) skewY(0deg);
+    animation-timing-function: ease-in-out; }
+  80% {
+    transform: translateY(0) skewY(8deg);
+    animation-timing-function: ease-out; }
+  100% {
+    transform: translateY(0) skewY(0); } }
+
+.wk.surrender-3 .icon-frame {
+  background-image: url(../img/icons/surrender-white-spritesheet-2.png); }
+
+.surrender-3 .icon {
+  transform: rotate(-12deg); }
+  .surrender-3 .icon .stick {
+    background-position: left;
+    background-size: 200%; }
+  .surrender-3 .icon .flag {
+    background-position: right;
+    background-size: 200%;
+    animation: flagSwitch .15s linear;
+    animation-delay: 0s;
+    animation-iteration-count: 12;
+    animation-fill-mode: forwards;
+    transform-origin: 30% 40%; }
+
+@keyframes flagSwitch {
+  0% {
+    transform: none; }
+  49% {
+    transform: none; }
+  50% {
+    transform: scaleY(-1); }
+  100% {
+    transform: scaleY(-1); } }
