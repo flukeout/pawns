@@ -412,3 +412,18 @@ $text-grey: #a7a6a2;
     }
 
 }
+
+
+.range-wrapper {
+  position: relative;
+
+  .delay {
+    color: white;
+    display: block;
+    font-size: 14px;
+    opacity: .7;
+    left: 0;
+    position: relative;
+    top: 10px;
+  }
+}

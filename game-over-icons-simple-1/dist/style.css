@@ -313,3 +313,14 @@ body {
         top: 8px;
         color: #84a956;
         font-size: 14px; }
+
+.range-wrapper {
+  position: relative; }
+  .range-wrapper .delay {
+    color: white;
+    display: block;
+    font-size: 14px;
+    opacity: .7;
+    left: 0;
+    position: relative;
+    top: 10px; }

@@ -1,4 +1,18 @@
-let modalDelayMS = 1000;
+document.addEventListener("DOMContentLoaded", function(event) {
+    let rangeElement = document.querySelector("input[type=range");
+    rangeElement.addEventListener("input", () => updateDelayDisplay(rangeElement));
+    updateDelayDisplay(rangeElement);
+});
+
+const updateDelayDisplay = el => {
+    modalDelayMS = el.value;
+    document.querySelector(".delay").innerHTML = 
+        "Modal delay: " + modalDelayMS + "ms";
+}
+
+
+let rangeElement;
+let modalDelayMS;
 let modalShowing = false;
 let inputEl;
 let boardSize = 8;
@@ -161,8 +175,6 @@ let pieces = [
 ]
 
 let lastZindex = 1;
-
-
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     generateBoard(boardSelector, boardSize);
